@@ -22,7 +22,7 @@ class JoomSocController extends JControllerLegacy {
 	
 	// Save User status
 	function status() {		
-		JSession::checkToken() or die('Invalid token');		
+		JSession::checkToken() or jexit(JTEXT::_('JInvalid_Token'));
 		try {
 			$user = JFactory::getUser();
 			

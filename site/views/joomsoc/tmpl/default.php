@@ -49,7 +49,7 @@ $document->addStyleSheet( $this->assetPath. '/css/joomsoc.css' );
 					</a>
 				</li>
 				<li class="list-group-item">
-					<a href="<?php echo JRoute::_('index.php?option=com_user&task=logout&'.JSession::getFormToken(). '=1') ?>">
+					<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'.JSession::getFormToken(). '=1') ?>">
 						<span class="glyphicon glyphicon-off"></span>
 						<?php echo JText::_('COM_JOOMSOC_LOGOUT') ?>
 					</a>
