@@ -8,7 +8,7 @@ Simply install the extensions on Joomla! and it's done. You can also customize t
 
 
 ### Authors and Contributors
-Charles EDOU NZE @charlesen
+Charles EDOU NZE <[@charlesen](https://twitter.com/charlesen7)>
 
 ### Support or Contact
 Having trouble with Joonet ? Check out my [website](https://charlesen.fr) and I’ll help you sort it out.
