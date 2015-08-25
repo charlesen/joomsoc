@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.2.0" method="upgrade">
  
-	<name>COM_JOOMSOC</name>
+	<name>COM_JOONET</name>
 	<!-- The following elements are optional and free of formatting constraints -->
 	<creationDate>May 2015</creationDate>
 	<author>Charles EDOU NZE</author>
@@ -12,7 +12,7 @@
 	<!--  The version string is recorded in the components table -->
 	<version>0.0.7</version>
 	<!-- The description is optional and defaults to the name -->
-	<description>COM_JOOMSOC_DESCRIPTION</description>
+	<description>COM_JOONET_DESCRIPTION</description>
  
 	<install> <!-- Runs on install -->
 		<sql>
@@ -45,13 +45,13 @@
 	</files>
 	
 	<languages folder="site/language">
-		<language tag="en-GB">en-GB/en-GB.com_joomsoc.ini</language>
-		<language tag="fr-FR">fr-FR/fr-FR.com_joomsoc.ini</language>
+		<language tag="en-GB">en-GB/en-GB.com_joonet.ini</language>
+		<language tag="fr-FR">fr-FR/fr-FR.com_joonetc.ini</language>
 	</languages>
  
 	<administration>
 		<!-- Administration Menu Section -->
-		<menu link='index.php?option=com_joomsoc'>JoomSoc</menu>
+		<menu link='index.php?option=com_joonet'>Joonet</menu>
 		<!-- Administration Main File Copy Section -->
 		<!-- Note the folder attribute: This attribute describes the folder
 			to copy FROM in the package to install therefore files copied
@@ -59,7 +59,7 @@
 		<files folder="admin">
 			<!-- Admin Main File Copy Section -->
 			<filename>index.html</filename>
-			<filename>joomsoc.php</filename>
+			<filename>joonet.php</filename>
 			<filename>controller.php</filename>
 			<!-- SQL files section -->
 			<folder>sql</folder>
@@ -69,10 +69,10 @@
 			<folder>views</folder>
 		</files>
 		<languages folder="admin/language">
-			<language tag="en-GB">en-GB/en-GB.com_joomsoc.ini</language>
-			<language tag="en-GB">en-GB/en-GB.com_joomsoc.sys.ini</language>
-			<language tag="fr-FR">fr-FR/fr-FR.com_joomsoc.ini</language>
-			<language tag="fr-FR">fr-FR/fr-FR.com_joomsoc.sys.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_joonet.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_joonet.sys.ini</language>
+			<language tag="fr-FR">fr-FR/fr-FR.com_joonet.ini</language>
+			<language tag="fr-FR">fr-FR/fr-FR.com_joonet.sys.ini</language>
 		</languages>
 	</administration>
  
