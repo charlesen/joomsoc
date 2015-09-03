@@ -1,0 +1,26 @@
+.joomsoc-wall .joomsoc-wall-status {
+	
+}
+
+#whatsnew {
+	width:450px;
+	max-width:100%;
+}
+
+#form-status button[type="submit"] {
+	width:100px;
+	max-width:100%;
+}
+
+#post-preview-img img {
+	max-width:200px;
+}
+
+.item-list .media-left {
+	width:65px;
+}
+
+.item-list .media-left .media-object {
+	width:45px;
+	height:45px;
+}
