@@ -134,78 +134,79 @@ else
 	. ($params->get('fluidContainer') ? ' fluid' : '');
 ?>">
 
+  
+	<?php if ($this->countModules('position-1')) : ?>
+		<nav class="ck pd ot app-navbar" role="navigation">
+			<div class="by">
+			    <!-- Header -->
+    			<div class="os">
+    			    <button type="button" class="ov collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="cv">Navigation</span>
+                <span class="ow"></span>
+                <span class="ow"></span>
+                <span class="ow"></span>
+              </button>
+              <a class="e" href="<?php echo $this->baseurl; ?>/"><!--.brand -->
+    						<?php echo $logo; ?>
+    						<?php if ($this->params->get('sitedescription')) : ?>
+    							<?php echo '<div class="site-description">' . htmlspecialchars($this->params->get('sitedescription')) . '</div>'; ?>
+    						<?php endif; ?>
+    					</a>
+    			</div><!--.os -->
+    			<div class="f collapse nav-collapse">
+						<jdoc:include type="modules" name="position-1" style="none" /> <!--/menu -->
+  					<jdoc:include type="modules" name="position-0" style="none" /> <!--/search -->
+					</div>
+			</div><!--.by -->
+		</nav>
+	<?php endif; ?>
+  
 	<!-- Body -->
 	<div class="by ams">
 		<div class="gd">
-			<?php if ($this->countModules('position-1')) : ?>
-				<nav class="ck pd ot app-navbar" role="navigation">
-					<div class="by">
-					    <!-- Header -->
-        			<div class="os">
-        			    <button type="button" class="ov collapsed" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="cv">Navigation</span>
-                    <span class="ow"></span>
-                    <span class="ow"></span>
-                    <span class="ow"></span>
-                  </button>
-                  <a class="e" href="<?php echo $this->baseurl; ?>/"><!--.brand -->
-        						<?php echo $logo; ?>
-        						<?php if ($this->params->get('sitedescription')) : ?>
-        							<?php echo '<div class="site-description">' . htmlspecialchars($this->params->get('sitedescription')) . '</div>'; ?>
-        						<?php endif; ?>
-        					</a>
-        			</div><!--.os -->
-        			<div class="f collapse nav-collapse">
-    						<jdoc:include type="modules" name="position-1" style="none" /> <!--/menu -->
-      					<jdoc:include type="modules" name="position-0" style="none" /> <!--/search -->
-    					</div>
-					</div><!--.by -->
-				</nav>
-			<?php endif; ?>
 			<jdoc:include type="modules" name="banner" style="xhtml" />
-			<div class="row-fluid">
-				<?php if ($this->countModules('position-8')) : ?>
-					<!-- Begin Sidebar -->
-					<div id="sidebar" class="span3">
-						<div class="sidebar-nav">
-							<jdoc:include type="modules" name="position-8" style="xhtml" />
-						</div>
+			<?php if ($this->countModules('position-8')) : ?>
+				<!-- Begin Sidebar -->
+				<div id="sidebar" class="go"> <!-- -->
+					<div class="sidebar-nav">
+						<jdoc:include type="modules" name="position-8" style="xhtml" />
 					</div>
-					<!-- End Sidebar -->
-				<?php endif; ?>
-				<main id="content" role="main" class="<?php echo $span; ?>">
-					<!-- Begin Content -->
-					<jdoc:include type="modules" name="position-3" style="xhtml" />
-					<jdoc:include type="message" />
-					<jdoc:include type="component" />
-					<jdoc:include type="modules" name="position-2" style="none" />
-					<!-- End Content -->
-				</main>
-				<?php if ($this->countModules('position-7')) : ?>
-					<div id="aside" class="span3">
-						<!-- Begin Right Sidebar -->
-						<jdoc:include type="modules" name="position-7" style="well" />
-						<!-- End Right Sidebar -->
-					</div>
-				<?php endif; ?>
-			</div>
-		</div>
-	</div>
-	<!-- Footer -->
-	<footer class="footer" role="contentinfo">
-		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
-			<hr />
-			<jdoc:include type="modules" name="footer" style="none" />
-			<p class="pull-right">
-				<a href="#top" id="back-top">
-					<?php echo JText::_('TPL_PROTOSTAR_BACKTOTOP'); ?>
-				</a>
-			</p>
-			<p>
-				&copy; <?php echo date('Y'); ?> <?php echo $sitename; ?>
-			</p>
-		</div>
-	</footer>
-	<jdoc:include type="modules" name="debug" style="none" />
+				</div>
+				<!-- End Sidebar -->
+			<?php endif; ?>
+			<main id="content" role="main">
+				<!-- Begin Content -->
+				<jdoc:include type="modules" name="position-3" style="xhtml" />
+				<jdoc:include type="message" />
+				<jdoc:include type="component" />
+				<jdoc:include type="modules" name="position-2" style="none" />
+				<!-- End Content -->
+			</main>
+			<?php if ($this->countModules('position-7')) : ?>
+				<div id="aside" class="go">
+					<!-- Begin Right Sidebar -->
+					<jdoc:include type="modules" name="position-7" style="well" />
+					<!-- End Right Sidebar -->
+				</div>
+			<?php endif; ?>
+    	<jdoc:include type="modules" name="debug" style="none" />
+		</div><!--.gd -->
+		
+		<!-- Footer -->
+  	<footer class="footer" role="contentinfo">
+  		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
+  			<hr />
+  			<jdoc:include type="modules" name="footer" style="none" />
+  			<p class="pull-right">
+  				<a href="#top" id="back-top">
+  					<?php echo JText::_('TPL_PROTOSTAR_BACKTOTOP'); ?>
+  				</a>
+  			</p>
+  			<p>
+  				&copy; <?php echo date('Y'); ?> <?php echo $sitename; ?>
+  			</p>
+  		</div>
+  	</footer>
+	</div><!--.by ams -->
 </body>
 </html>
