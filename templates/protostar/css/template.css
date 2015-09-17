@@ -253,12 +253,8 @@ a:focus {
 	min-height: 1px;
 	margin-left: 20px;
 }
-.container,
-.navbar-static-top .container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
-	width: 940px;
-}
+
+
 .span12 {
 	width: 940px;
 }
@@ -2847,11 +2843,7 @@ input[type="submit"].btn.btn-mini {
 .alert-block p + p {
 	margin-top: 5px;
 }
-.nav {
-	margin-left: 0;
-	margin-bottom: 18px;
-	list-style: none;
-}
+
 .nav > li > a {
 	display: block;
 }
@@ -3366,11 +3358,7 @@ input[type="submit"].btn.btn-mini {
 	-moz-border-radius: 0;
 	border-radius: 0;
 }
-.navbar-static-top .container,
-.navbar-fixed-top .container,
-.navbar-fixed-bottom .container {
-	width: 940px;
-}
+
 .navbar-fixed-top {
 	top: 0;
 }
@@ -5232,12 +5220,7 @@ a.badge:focus {
 		min-height: 1px;
 		margin-left: 20px;
 	}
-	.container,
-	.navbar-static-top .container,
-	.navbar-fixed-top .container,
-	.navbar-fixed-bottom .container {
-		width: 940px;
-	}
+	
 	.span12 {
 		width: 940px;
 	}
@@ -7029,9 +7012,7 @@ body.site.fluid {
 	color: white;
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 }
-.container {
-	max-width: 960px;
-}
+
 .body .container {
 	background-color: #fff;
 	-moz-border-radius: 4px;

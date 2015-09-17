@@ -12,9 +12,9 @@ defined('_JEXEC') or die('Restricted access');
 
 JHtml::_('jquery.framework');
 $document = JFactory::getDocument();
-$document->addStyleSheet( $this->assetPath. '/css/toolkit.css');
-$document->addStyleSheet( $this->assetPath. '/css/application.css');
-$document->addStyleSheet( $this->assetPath. '/css/joonet.css');
+//$document->addStyleSheet( $this->assetPath. '/css/toolkit.css');
+//$document->addStyleSheet( $this->assetPath. '/css/application.css');
+//$document->addStyleSheet( $this->assetPath. '/css/joonet.css');
 //$document->addScript( $this->assetPath. '/js/joomsoc.js' );
 ?>
 

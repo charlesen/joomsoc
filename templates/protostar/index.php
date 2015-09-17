@@ -40,10 +40,15 @@ JHtml::_('bootstrap.framework');
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js');
 
 // Add Stylesheets
-$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css');
+//$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css');
+
+$joonetAsset = $this->baseurl . '/components/com_joonet/assets';
+$doc->addStyleSheet( $joonetAsset . '/css/toolkit.css');
+$doc->addStyleSheet( $joonetAsset . '/css/application.css');
+$doc->addStyleSheet( $joonetAsset . '/css/joonet.css');
 
 // Load optional RTL Bootstrap CSS
-JHtml::_('bootstrap.loadCss', false, $this->direction);
+//JHtml::_('bootstrap.loadCss', false, $this->direction);
 
 // Adjusting content width
 if ($this->countModules('position-7') && $this->countModules('position-8'))
@@ -121,44 +126,40 @@ else
 	<![endif]-->
 </head>
 
-<body class="site <?php echo $option
+<body class="anf <?php echo $option
 	. ' view-' . $view
 	. ($layout ? ' layout-' . $layout : ' no-layout')
 	. ($task ? ' task-' . $task : ' no-task')
 	. ($itemid ? ' itemid-' . $itemid : '')
 	. ($params->get('fluidContainer') ? ' fluid' : '');
-	echo ($this->direction == 'rtl' ? ' rtl' : '');
 ?>">
 
 	<!-- Body -->
-	<div class="body">
-		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
-			<!-- Header -->
-			<header class="header" role="banner">
-				<div class="header-inner clearfix">
-					<a class="brand pull-left" href="<?php echo $this->baseurl; ?>/">
-						<?php echo $logo; ?>
-						<?php if ($this->params->get('sitedescription')) : ?>
-							<?php echo '<div class="site-description">' . htmlspecialchars($this->params->get('sitedescription')) . '</div>'; ?>
-						<?php endif; ?>
-					</a>
-					<div class="header-search pull-right">
-						<jdoc:include type="modules" name="position-0" style="none" />
-					</div>
-				</div>
-			</header>
+	<div class="by ams">
+		<div class="gd">
 			<?php if ($this->countModules('position-1')) : ?>
-				<nav class="navigation" role="navigation">
-					<div class="navbar pull-left">
-						<a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</a>
-					</div>
-					<div class="nav-collapse">
-						<jdoc:include type="modules" name="position-1" style="none" />
-					</div>
+				<nav class="ck pd ot app-navbar" role="navigation">
+					<div class="by">
+					    <!-- Header -->
+        			<div class="os">
+        			    <button type="button" class="ov collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="cv">Navigation</span>
+                    <span class="ow"></span>
+                    <span class="ow"></span>
+                    <span class="ow"></span>
+                  </button>
+                  <a class="e" href="<?php echo $this->baseurl; ?>/"><!--.brand -->
+        						<?php echo $logo; ?>
+        						<?php if ($this->params->get('sitedescription')) : ?>
+        							<?php echo '<div class="site-description">' . htmlspecialchars($this->params->get('sitedescription')) . '</div>'; ?>
+        						<?php endif; ?>
+        					</a>
+        			</div><!--.os -->
+        			<div class="f collapse nav-collapse">
+    						<jdoc:include type="modules" name="position-1" style="none" /> <!--/menu -->
+      					<jdoc:include type="modules" name="position-0" style="none" /> <!--/search -->
+    					</div>
+					</div><!--.by -->
 				</nav>
 			<?php endif; ?>
 			<jdoc:include type="modules" name="banner" style="xhtml" />

@@ -15,3 +15,5 @@
 2015-09-17T07:51:23+00:00	INFO 90.7.1.211	joomlafailure	Le mot de passe ne correspond pas au nom d'utilisateur, ou vous n'avez pas encore de compte.
 2015-09-17T07:51:29+00:00	INFO 90.7.1.211	joomlafailure	Le mot de passe ne correspond pas au nom d'utilisateur, ou vous n'avez pas encore de compte.
 2015-09-17T08:00:45+00:00	INFO 90.7.1.211	joomlafailure	Mot de passe invalide
+2015-09-17T08:06:17+00:00	INFO 90.7.1.211	joomlafailure	Mot de passe invalide
+2015-09-17T08:06:26+00:00	INFO 90.7.1.211	joomlafailure	Mot de passe invalide
