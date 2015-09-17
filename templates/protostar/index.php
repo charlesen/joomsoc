@@ -154,8 +154,9 @@ else
     					</a>
     			</div><!--.os -->
     			<div class="f collapse nav-collapse">
-						<jdoc:include type="modules" name="position-1" style="none" /> <!--/menu -->
-  					<jdoc:include type="modules" name="position-0" style="none" /> <!--/search -->
+						<jdoc:include type="modules" name="position-1" style="none" /> <!--/main-menu -->
+  					<jdoc:include type="modules" name="position-4" style="none" /> <!--/dropdown-menu -->
+  					<jdoc:include type="modules" name="position-0" style="none" /> <!--/search-menu -->
 					</div>
 			</div><!--.by -->
 		</nav>
@@ -179,7 +180,6 @@ else
 				<jdoc:include type="modules" name="position-3" style="xhtml" />
 				<jdoc:include type="message" />
 				<jdoc:include type="component" />
-				<jdoc:include type="modules" name="position-2" style="none" />
 				<!-- End Content -->
 			</main>
 			<?php if ($this->countModules('position-7')) : ?>
@@ -194,6 +194,7 @@ else
 		
 		<!-- Footer -->
   	<footer class="footer" role="contentinfo">
+  	  <jdoc:include type="modules" name="position-2" style="none" />
   		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
   			<hr />
   			<jdoc:include type="modules" name="footer" style="none" />

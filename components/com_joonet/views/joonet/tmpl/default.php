@@ -58,33 +58,35 @@ $document = JFactory::getDocument();
 <div class="ha">
 	<ul class="ca qp anx">
 	  <li class="qg b aml">
-	    <form class="form-inline" id="form-status">
-	      <div class="input-group">
-						<label class="sr-only"><?php echo JText::_('COM_JOONET_WHATSNEW') ?></label>
-						<input type="text" class="form-control" name="content" id="whatsnew" placeholder="<?php echo JText::_('COM_JOONET_WHATSNEW') ?>" />
-						<?php echo JHtml::_('form.token'); ?>
-						<input type="hidden" name="post-photo" id="post-photo" />
-						<input type="hidden" name="post-video" id="post-video" />
-						<div class="fj">
-						  <button type="submit" class="cg fm btn btn-default btn-submit">
-							  <span class="h xh"><?php echo JText::_('COM_JOONET_POST_TEXT') ?></span>
-							</button>
-						</div>
-					</div>
-					<div class="form-group">
-						<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_PHOTO') ?>" id="photoModalBtn">
-							<span class="glyphicon glyphicon-camera"></span>
-						</button><!--Add Photos -->
-						<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_VIDEO') ?>">
-							<span class="glyphicon glyphicon-play-circle"></span>
-						</button><!--Add Video : youtube, Vimeo, Dailyvotion,... -->
-					</div>
-					<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModal"></div><!--/Photo modal -->
-					<div class="col-md-12" id="post-preview">
-						<p id="post-preview-text"></p>
-						<p id="post-preview-img"></p>
-					</div><!--/#post-preview -->
-			</form><!--./status form -->
+	    <div class="input-group">
+	        <form class="form-inline" id="form-status">
+    	      <div class="input-group">
+    						<!--<label class="sr-only"><?php echo JText::_('COM_JOONET_WHATSNEW') ?></label>-->
+    						<input type="text" class="form-control" name="content" id="whatsnew" placeholder="<?php echo JText::_('COM_JOONET_WHATSNEW') ?>" />
+    						<?php echo JHtml::_('form.token'); ?>
+    						<input type="hidden" name="post-photo" id="post-photo" />
+    						<input type="hidden" name="post-video" id="post-video" />
+    						<div class="fj">
+    						  <button type="submit" class="cg fm btn btn-default btn-submit">
+    							  <span class="h xh"><?php echo JText::_('COM_JOONET_POST_TEXT') ?></span>
+    							</button>
+    						</div>
+    					</div>
+    					<div class="form-group">
+    						<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_PHOTO') ?>" id="photoModalBtn">
+    							<span class="glyphicon glyphicon-camera"></span>
+    						</button><!--Add Photos -->
+    						<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_VIDEO') ?>">
+    							<span class="glyphicon glyphicon-play-circle"></span>
+    						</button><!--Add Video : youtube, Vimeo, Dailyvotion,... -->
+    					</div>
+    					<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModal"></div><!--/Photo modal -->
+    					<div class="col-md-12" id="post-preview">
+    						<p id="post-preview-text"></p>
+    						<p id="post-preview-img"></p>
+    					</div><!--/#post-preview -->
+    			</form><!--./status form -->
+	    </div>
 	  </li>
 	  <?php foreach ($this->items as $item) : ?>
 		<li class="qg b aml">

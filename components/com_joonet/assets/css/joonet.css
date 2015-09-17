@@ -1,9 +1,9 @@
-.joomsoc-wall .joomsoc-wall-status {
-	
-}
-
 #whatsnew {
 	max-width:100%;
+}
+
+#form-status {
+	width:100%;
 }
 
 #form-status button[type="submit"] {
