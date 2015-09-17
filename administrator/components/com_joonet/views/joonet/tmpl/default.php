@@ -10,4 +10,4 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 ?>
-<h1><?php echo 'JoomSoc Admin' ?></h1>
+<h1><?php echo 'Joonet Admin' ?></h1>

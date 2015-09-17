@@ -32,7 +32,7 @@ class JFormFieldJoonet extends JFormFieldList
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select('id, greeting');
-		$query->from('#__helloworld');
+		$query->from('#__joonet');
 		$db->setQuery((string) $query);
 		$messages = $db->loadObjectList();
 		$options  = array();

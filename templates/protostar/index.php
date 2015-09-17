@@ -40,7 +40,7 @@ JHtml::_('bootstrap.framework');
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js');
 
 // Add Stylesheets
-//$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css');
+$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css');
 
 // Load optional RTL Bootstrap CSS
 JHtml::_('bootstrap.loadCss', false, $this->direction);
@@ -121,11 +121,19 @@ else
 	<![endif]-->
 </head>
 
-<body class="ang">
+<body class="site <?php echo $option
+	. ' view-' . $view
+	. ($layout ? ' layout-' . $layout : ' no-layout')
+	. ($task ? ' task-' . $task : ' no-task')
+	. ($itemid ? ' itemid-' . $itemid : '')
+	. ($params->get('fluidContainer') ? ' fluid' : '');
+	echo ($this->direction == 'rtl' ? ' rtl' : '');
+?>">
+
 	<!-- Body -->
 	<div class="body">
-		<div class="main-container">
-			<!-- Header
+		<div class="container<?php echo ($params->get('fluidContainer') ? '-fluid' : ''); ?>">
+			<!-- Header -->
 			<header class="header" role="banner">
 				<div class="header-inner clearfix">
 					<a class="brand pull-left" href="<?php echo $this->baseurl; ?>/">
@@ -138,27 +146,23 @@ else
 						<jdoc:include type="modules" name="position-0" style="none" />
 					</div>
 				</div>
-			</header>-->
+			</header>
 			<?php if ($this->countModules('position-1')) : ?>
-				<nav class="ck pd ot app-navbar" role="navigation">
-					<div class="by">
-					  <div class="os">
-              <button type="button" class="ov collapsed" data-toggle="collapse" data-target="#navbar-collapse-main">
-                <span class="cv">Navigation</span>
-                <span class="ow"></span>
-                <span class="ow"></span>
-                <span class="ow"></span>
-              </button>
-              <a class="e" href="/">Joonet</a>
-            </div>
-            <div class="f collapse" id="navbar-collapse-main">
-  						<jdoc:include type="modules" name="position-1" style="none" />
-  					</div>
+				<nav class="navigation" role="navigation">
+					<div class="navbar pull-left">
+						<a class="btn btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</a>
+					</div>
+					<div class="nav-collapse">
+						<jdoc:include type="modules" name="position-1" style="none" />
 					</div>
 				</nav>
 			<?php endif; ?>
 			<jdoc:include type="modules" name="banner" style="xhtml" />
-			<div class="by amt">
+			<div class="row-fluid">
 				<?php if ($this->countModules('position-8')) : ?>
 					<!-- Begin Sidebar -->
 					<div id="sidebar" class="span3">

@@ -11,11 +11,11 @@
 defined('_JEXEC') or die('Restricted access');
  
 /**
- * JoomSoc Model
+ * Joonet Model
  *
  * @since  0.0.1
  */
-class JoomSocModelJoomSoc extends JModelItem
+class JoonetModelJoonet extends JModelItem
 {
 	/**
 	 * @var array messages
@@ -33,7 +33,7 @@ class JoomSocModelJoomSoc extends JModelItem
 	 *
 	 * @since   1.6
 	 */
-	public function getTable($type = 'JoomSoc', $prefix = 'JoomSocTable', $config = array())
+	public function getTable($type = 'Joonet', $prefix = 'JoonetTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
 	}
@@ -80,6 +80,7 @@ class JoomSocModelJoomSoc extends JModelItem
 	 * @return  string        Fetched String from Table for relevant Id
 	 */
 	public function getItems($limit = 12, $next=null) {
+	  
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
 		
@@ -88,12 +89,14 @@ class JoomSocModelJoomSoc extends JModelItem
 		$query
 			//->select('*')
 			->select($db->quoteName($columns))
-			->from($db->quoteName('#__joomsoc', 'a'))
+			->from($db->quoteName('#__joonet', 'a'))
 			->join('INNER', $db->quoteName('#__users', 'b') . ' ON (' . $db->quoteName('a.user_id') . ' = ' . $db->quoteName('b.id') . ')')
 			->where($db->quoteName('a.published') . ' = 1')
 			->order($db->quoteName('a.created_at'). 'DESC');
 		
 		$db->setQuery($query);
+		
+		//print_r($db->loadObjectList());
 		
 		return $db->loadObjectList();
 	}
@@ -107,7 +110,7 @@ class JoomSocModelJoomSoc extends JModelItem
 	 */
 	public function saveStatus( $data ) {
 		$db = JFactory::getDbo();
-		$res = $db->insertObject('#__joomsoc', $data);
+		$res = $db->insertObject('#__joonet', $data);
 		if ( !$res ) {
 			$this->setError( $db->getErrorMsg() );
 			return false;
@@ -125,7 +128,7 @@ class JoomSocModelJoomSoc extends JModelItem
 	 */
 	public function updateStatus( $data ) {
 		$db = JFactory::getDbo();
-		$res = $db->updateObject('#__joomsoc', $data);
+		$res = $db->updateObject('#__joonet', $data);
 		if ( !$res ) {
 			$this->setError( $db->getErrorMsg() );
 			return false;
@@ -151,7 +154,7 @@ class JoomSocModelJoomSoc extends JModelItem
 		);
 		
 		// delete item
-		$query->delete( $db->quoteName('#__joomsoc'));
+		$query->delete( $db->quoteName('#__joonet'));
 		$query->where( $conditions );
 		
 		$db->setQuery($query);

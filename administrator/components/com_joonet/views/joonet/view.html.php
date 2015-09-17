@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_joomsoc
+ * @subpackage  com_joonet
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -11,14 +11,14 @@
 defined('_JEXEC') or die('Restricted access');
  
 /**
- * HTML View class for the JoomSoc Component
+ * HTML View class for the Joonet Component
  *
  * @since  0.0.1
 */
-class JoomSocViewJoomSoc extends JViewLegacy
+class JoonetViewJoonet extends JViewLegacy
 {
 	/**
-	 * Display the JoomSoc view
+	 * Display the Joonet view
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *
@@ -54,9 +54,9 @@ class JoomSocViewJoomSoc extends JViewLegacy
 	 */
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(JText::_('COM_JOOMSOC_MANAGER_JOOMSOC'));
-		JToolBarHelper::addNew('joomsoc.add');
-		JToolBarHelper::editList('joomsoc.edit');
-		JToolBarHelper::deleteList('', 'joomsoc.delete');
+		JToolBarHelper::title(JText::_('COM_JOONET_MANAGER_JOONET'));
+		JToolBarHelper::addNew('joonet.add');
+		JToolBarHelper::editList('joonet.edit');
+		JToolBarHelper::deleteList('', 'joonet.delete');
 	}
 }

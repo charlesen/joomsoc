@@ -61,42 +61,37 @@ $document->addStyleSheet( $this->assetPath. '/css/joonet.css');
 			<ul class="ca qp anx">
 			  <li class="qg b aml">
 			    <form class="form-inline" id="form-status">
-  					<div class="row">
-  						<div class="col-md-12">
-  							<div class="form-group">
-  								<label class="sr-only"><?php echo JText::_('COM_JOONET_WHATSNEW') ?></label>
-  								<input type="text" class="form-control" name="content" id="whatsnew" placeholder="<?php echo JText::_('COM_JOONET_WHATSNEW') ?>" />
-  							</div>
+			      <div class="input-group">
+  							<label class="sr-only"><?php echo JText::_('COM_JOONET_WHATSNEW') ?></label>
+  							<input type="text" class="form-control" name="content" id="whatsnew" placeholder="<?php echo JText::_('COM_JOONET_WHATSNEW') ?>" />
   							<?php echo JHtml::_('form.token'); ?>
   							<input type="hidden" name="post-photo" id="post-photo" />
   							<input type="hidden" name="post-video" id="post-video" />
-  							<button type="submit" class="btn btn-default btn-submit"><?php echo JText::_('COM_JOONET_POST_TEXT') ?></button>
-  						</div>
-  						<div class="col-md-12">
-  							<div class="form-group">
-  								<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_PHOTO') ?>" id="photoModalBtn">
-  									<span class="glyphicon glyphicon-camera"></span>
-  								</button><!--Add Photos -->
-  								<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_VIDEO') ?>">
-  									<span class="glyphicon glyphicon-play-circle"></span>
-  								</button><!--Add Video : youtube, Vimeo, Dailyvotion,... -->
+  							<div class="fj">
+  							  <button type="submit" class="cg fm btn btn-default btn-submit">
+    							  <span class="h xh"><?php echo JText::_('COM_JOONET_POST_TEXT') ?></span>
+    							</button>
   							</div>
-  							
-  							<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModal">
-  							</div><!--/Photo modal -->
-  							
-  						</div><!--Media action buttons : photos, videos,... -->
+  						</div>
+  						<div class="form-group">
+								<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_PHOTO') ?>" id="photoModalBtn">
+									<span class="glyphicon glyphicon-camera"></span>
+								</button><!--Add Photos -->
+								<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_VIDEO') ?>">
+									<span class="glyphicon glyphicon-play-circle"></span>
+								</button><!--Add Video : youtube, Vimeo, Dailyvotion,... -->
+							</div>
+							<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModal"></div><!--/Photo modal -->
   						<div class="col-md-12" id="post-preview">
   							<p id="post-preview-text"></p>
   							<p id="post-preview-img"></p>
   						</div><!--/#post-preview -->
-  					</div>
   				</form><!--./status form -->
 			  </li>
 			  <?php foreach ($this->items as $item) : ?>
 				<li class="qg b aml">
 					<a class="qk" href="<?php echo JRoute::_('index.php?option=com_joomsoc&view=profile&username='.$item->username) ?>">
-						<img class="media-object img-circle img-thumbnail" src="<?php echo $this->assetPath ?>/images/profile-default.png" />
+						<img class="qi cu" src="<?php echo $this->assetPath ?>/images/profile-default.png" />
 					</a>
 					<div class="qh">
 						<div class="qo">

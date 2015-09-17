@@ -18,7 +18,7 @@ defined('_JEXEC') or die('Restricted access');
 class JoonetViewJoonet extends JViewLegacy
 {
 	/**
-	 * Display the JoomSoc view
+	 * Display the J view
 	 *
 	 * @param   string  $tpl  The name of the template file to parse; automatically searches through the template paths.
 	 *

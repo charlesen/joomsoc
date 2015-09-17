@@ -29,7 +29,7 @@ class JoonetModelJoonet extends JModelList
 		$query = $db->getQuery(true);
  
 		// Create the base select statement.
-		$query->select('*')->from($db->quoteName('#__joomsoc'));
+		$query->select('*')->from($db->quoteName('#__joonet'));
  
 		return $query;
 	}
