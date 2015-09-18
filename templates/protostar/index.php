@@ -137,24 +137,24 @@ else
 
   
 	<?php if ($this->countModules('position-1')) : ?>
-		<nav class="ck pd ot app-navbar" role="navigation">
-			<div class="by">
+		<nav class="navbar navbar-fixed-top" role="navigation">
+			<div class="container-fluid">
 			    <!-- Header -->
-    			<div class="os">
-    			    <button type="button" class="ov collapsed" data-toggle="collapse" data-target=".nav-collapse">
+    			<div class="navbar-header">
+    			    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="cv">Navigation</span>
                 <span class="ow"></span>
                 <span class="ow"></span>
                 <span class="ow"></span>
               </button>
-              <a class="e" href="<?php echo $this->baseurl; ?>/"><!--.brand -->
+              <a class="navbar-brand" href="<?php echo $this->baseurl; ?>/"><!--.brand -->
     						<?php echo $logo; ?>
     						<?php if ($this->params->get('sitedescription')) : ?>
     							<?php echo '<div class="site-description">' . htmlspecialchars($this->params->get('sitedescription')) . '</div>'; ?>
     						<?php endif; ?>
     					</a>
     			</div><!--.os -->
-    			<div class="f collapse nav-collapse">
+    			<div class="collapse navbar-collapse">
 						<jdoc:include type="modules" name="position-1" style="none" /> <!--/main-menu -->
   					<jdoc:include type="modules" name="position-4" style="none" /> <!--/dropdown-menu -->
   					<jdoc:include type="modules" name="position-0" style="none" /> <!--/search-menu -->
