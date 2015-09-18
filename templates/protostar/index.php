@@ -43,6 +43,7 @@ $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template
 //$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css');
 
 $joonetAsset = $this->baseurl . '/components/com_joonet/assets';
+$doc->addStyleSheet( $joonetAsset . '/bootstrap/css/bootstrap.min.css');
 $doc->addStyleSheet( $joonetAsset . '/css/toolkit.css');
 $doc->addStyleSheet( $joonetAsset . '/css/application.css');
 $doc->addStyleSheet( $joonetAsset . '/css/joonet.css');
@@ -126,7 +127,7 @@ else
 	<![endif]-->
 </head>
 
-<body class="anf <?php echo $option
+<body class="<?php echo $option
 	. ' view-' . $view
 	. ($layout ? ' layout-' . $layout : ' no-layout')
 	. ($task ? ' task-' . $task : ' no-task')
@@ -163,8 +164,8 @@ else
 	<?php endif; ?>
   
 	<!-- Body -->
-	<div class="by ams">
-		<div class="gd">
+	<div id="page-body" class="container-fluid">
+		<div class="row">
 			<jdoc:include type="modules" name="banner" style="xhtml" />
 			<?php if ($this->countModules('position-8')) : ?>
 				<!-- Begin Sidebar -->
@@ -175,13 +176,13 @@ else
 				</div>
 				<!-- End Sidebar -->
 			<?php endif; ?>
-			<main id="content" role="main">
+			<div id="content" role="main">
 				<!-- Begin Content -->
 				<jdoc:include type="modules" name="position-3" style="xhtml" />
 				<jdoc:include type="message" />
 				<jdoc:include type="component" />
 				<!-- End Content -->
-			</main>
+			</div>
 			<?php if ($this->countModules('position-7')) : ?>
 				<div id="aside" class="go">
 					<!-- Begin Right Sidebar -->

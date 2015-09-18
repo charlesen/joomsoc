@@ -1,3 +1,25 @@
+body {
+  padding-top: 60px !important;
+  padding-bottom: 60px !important;
+}
+#page-body {
+  margin: 15px 30px;
+}
+
+.aside {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #ffffff;
+    border: 1px solid #d3e0e9;
+    border-radius: 4px;
+}
+
+#content .aside-title {
+  margin-top: 0;
+} 
+
 #whatsnew {
 	max-width:100%;
 }

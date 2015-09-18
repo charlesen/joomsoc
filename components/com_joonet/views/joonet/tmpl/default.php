@@ -18,8 +18,8 @@ $document = JFactory::getDocument();
 //$document->addScript( $this->assetPath. '/js/joomsoc.js' );
 ?>
 
-<div class="go">
-	<h5><?php echo JText::_('COM_JOONET_NAVIGATOR') ?></h5>
+<div class="col-md-3 aside">
+	<h5 class="aside-title"><?php echo JText::_('COM_JOONET_NAVIGATOR') ?></h5>
 	<ul class="list-group">
 		<li class="list-group-item">
 			<a href="#">
@@ -55,7 +55,7 @@ $document = JFactory::getDocument();
 		</li>
 	</ul> 
 </div><!--.go -->
-<div class="ha">
+<div class="col-md-6">
 	<ul class="ca qp anx">
 	  <li class="qg b aml">
 	    <div class="input-group">
@@ -110,8 +110,8 @@ $document = JFactory::getDocument();
 		<?php endforeach; ?>
 	</ul><!--What's new ? -->
 </div>
-<div class="go">
-	<h5><?php echo JText::_('COM_JOONET_SUGGESTIONS') ?></h5>
+<div class="col-md-3 aside">
+	<h5 class="aside-title"><?php echo JText::_('COM_JOONET_SUGGESTIONS') ?></h5>
 </div>
 
 <script>
