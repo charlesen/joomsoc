@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_joomsoc
+ * @subpackage  COM_JOONET
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -13,7 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 <div class="modal-dialog modal-sm" role="document">
 	<div class="modal-content">
 		<div class="modal-header">
-			<h4 class="modal-title"><?php echo JText::_('COM_JOOMSOC_ADD_PHOTO') ?></h4>
+			<h4 class="modal-title"><?php echo JText::_('COM_JOONET_ADD_PHOTO') ?></h4>
 		</div>
 		<div class="modal-body">
 			<form name="upload" id="fileuploader" method="post" enctype="multipart/form-data">
@@ -23,8 +23,8 @@ defined('_JEXEC') or die('Restricted access');
 				</div>
 				<hr />
 				<div class="form-group text-center">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo JText::_('COM_JOOMSOC_ACTION_CLOSE') ?></button>
-					<button type="submit" class="btn btn-primary" id="btn-upload"><?php echo JText::_('COM_JOOMSOC_ACTION_ADD') ?></button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo JText::_('COM_JOONET_ACTION_CLOSE') ?></button>
+					<button type="submit" class="btn btn-primary" id="btn-upload"><?php echo JText::_('COM_JOONET_ACTION_ADD') ?></button>
 				</div>
 			</form>
 		</div>
@@ -41,7 +41,7 @@ defined('_JEXEC') or die('Restricted access');
 			
 			console.log();
 			
-			var url = "<?php echo JRoute::_('index.php?option=com_joomsoc&task=upload&format=json&'. JSession::getFormToken() . '=1'); ?>",
+			var url = "<?php echo JRoute::_('index.php?option=com_joonet&task=upload&format=json&'. JSession::getFormToken() . '=1'); ?>",
 				formData = new FormData( jQuery(this)[0] );
 			
 			jQuery.ajax({

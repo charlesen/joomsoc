@@ -92,7 +92,7 @@ class JoonetModelJoonet extends JModelItem
 			->from($db->quoteName('#__joonet', 'a'))
 			->join('INNER', $db->quoteName('#__users', 'b') . ' ON (' . $db->quoteName('a.user_id') . ' = ' . $db->quoteName('b.id') . ')')
 			->where($db->quoteName('a.published') . ' = 1')
-			->order($db->quoteName('a.created_at'). 'DESC');
+			->order($db->quoteName('a.id'). 'DESC');
 		
 		$db->setQuery($query);
 		

@@ -10,12 +10,15 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
-JHtml::_('jquery.framework');
+JHtml::_('jquery.framework', false);
+JHtml::_('bootstrap.framework');
+
 $document = JFactory::getDocument();
 //$document->addStyleSheet( $this->assetPath. '/css/toolkit.css');
 //$document->addStyleSheet( $this->assetPath. '/css/application.css');
 //$document->addStyleSheet( $this->assetPath. '/css/joonet.css');
-//$document->addScript( $this->assetPath. '/js/joomsoc.js' );
+$document->addScript( $this->assetPath. '/js/joonet.js' );
+
 ?>
 
 <div class="col-md-3 aside">
@@ -24,27 +27,27 @@ $document = JFactory::getDocument();
 		<li class="list-group-item">
 			<a href="#">
 				<span class="glyphicon glyphicon-user"></span>
-				<?php echo JText::_('COM_JOONET_MYPROFILE') ?>
+				<?php echo JText::_('COM_JOONET_PROFILE') ?>
 			</a>
 		</li>
 		<li class="list-group-item">
 			<a href="#">
 				<span class="glyphicon glyphicon-envelope"></span>
-				<?php echo JText::_('COM_JOONET_MYMESSAGES') ?>
+				<?php echo JText::_('COM_JOONET_MESSAGES') ?>
 				<span class="badge">1</span>
 			</a>
 		</li>
 		<li class="list-group-item">
 			<a href="#">
 				<span class="glyphicon glyphicon-camera"></span>
-				<?php echo JText::_('COM_JOONET_MYPHOTOS') ?>
+				<?php echo JText::_('COM_JOONET_PHOTOS') ?>
 				<span class="badge">0</span>
 			</a>
 		</li>
 		<li class="list-group-item">
 			<a href="#">
 				<span class="glyphicon glyphicon-cog"></span>
-				<?php echo JText::_('COM_JOONET_MYSETTINGS') ?>
+				<?php echo JText::_('COM_JOONET_SETTINGS') ?>
 			</a>
 		</li>
 		<li class="list-group-item">
@@ -60,19 +63,19 @@ $document = JFactory::getDocument();
 	  <li class="qg b aml">
 	    <div class="input-group">
 	        <form class="form-inline" id="form-status">
-    	      <div class="input-group">
-    						<!--<label class="sr-only"><?php echo JText::_('COM_JOONET_WHATSNEW') ?></label>-->
+    	       <div class="input-group">
+    						<label class="sr-only"><?php echo JText::_('COM_JOONET_WHATSNEW') ?></label>
     						<input type="text" class="form-control" name="content" id="whatsnew" placeholder="<?php echo JText::_('COM_JOONET_WHATSNEW') ?>" />
     						<?php echo JHtml::_('form.token'); ?>
     						<input type="hidden" name="post-photo" id="post-photo" />
     						<input type="hidden" name="post-video" id="post-video" />
     						<div class="fj">
-    						  <button type="submit" class="cg fm btn btn-default btn-submit">
-    							  <span class="h xh"><?php echo JText::_('COM_JOONET_POST_TEXT') ?></span>
+    						  <button type="submit" class="cg fm btn btn-default btn-submit" disabled="disabled">
+    							  <span><?php echo JText::_('COM_JOONET_POST_TEXT') ?></span>
     							</button>
     						</div>
     					</div>
-    					<div class="form-group">
+    					<div class="input-group">
     						<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_PHOTO') ?>" id="photoModalBtn">
     							<span class="glyphicon glyphicon-camera"></span>
     						</button><!--Add Photos -->
@@ -115,47 +118,60 @@ $document = JFactory::getDocument();
 </div>
 
 <script>
-	jQuery(document).ready(function(){
+	$(document).ready(function(){
+	  
+	  // Input text realtime validation
+	  $('#whatsnew').keyup(function(){
+      //$(this).next().text($(this).val().length < 5 ? "<?php echo JText::_('COM_JOONET_SUGGESTIONS') ?>" : "");
+      if ( $(this).val() !== ''  ) {
+        console.log($(this).val());
+        $('#form-status button[type="submit"]').removeAttr("disabled", "disabled");
+      } else {
+        $('#form-status button[type="submit"]').attr("disabled", "disabled");
+      }
+    });
+	  
 		// Form Status submit 
-		jQuery("#form-status").on('submit', function ( e ) {
-			var url = "<?php echo JRoute::_('index.php?option=com_joonet&task=status&format=json&'. JSession::getFormToken() . '=1'); ?>", data=jQuery(this).serialize();
-			
+		$("#form-status").on('submit', function ( e ) {
 			e.preventDefault();
-			
-			jQuery.ajax({
-				type:"post",
-				url:url,
-				data:data,
-				dataType:'html',
-				success : function ( res ) {
-					// Clean inputs
-					jQuery('#whatsnew').val('');
-					jQuery("#post-photo").val('');
-					jQuery("#post-preview-img").html('');
-					
-					jQuery('.item-list').prepend(res);
-					
-					// Add item in the list
-					//updateViewList ( res );
-				},
-				error : function ( error ) {
-					console.log(error);
-				}
-			});
+			if ( $('#whatsnew').val() !== "" ) {
+			    var url = "<?php echo JRoute::_('index.php?option=com_joonet&task=status&format=json&'. JSession::getFormToken() . '=1'); ?>",
+			    data=$(this).serialize();
+			    jQuery.ajax({
+    				type:"post",
+    				url:url,
+    				data:data,
+    				dataType:'html',
+    				success : function ( res ) {
+    					// Clean inputs
+    					$('#whatsnew').val('');
+    					$("#post-photo").val('');
+    					$("#post-preview-img").html('');
+    					
+    					$('.item-list').prepend(res);
+    					
+    					// Add item in the list
+    					//updateViewList ( res );
+    				},
+    				error : function ( error ) {
+    					console.log(error);
+    				}
+    			});
+			}
 		});
 		
 		// Photo modal
 		var photoModalLoaded = false;
-		jQuery('#photoModalBtn').on('click', function() {
+		$('#photoModalBtn').on('click', function() {
 			
 			// Show modal
-			jQuery('#photoModal').modal();
+			$('#photoModal').modal();
 			
 			// Load partial view
 			var partialUrl = "<?php echo JRoute::_('index.php?option=com_joonet&view=photo&format=raw') ?>";			
 			if ( !photoModalLoaded ) {
 				photoModalLoaded = true;
-				jQuery('#photoModal').load( partialUrl );
+				$('#photoModal').load( partialUrl );
 			}
 		});
 	});
