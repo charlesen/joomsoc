@@ -36,11 +36,7 @@ defined('_JEXEC') or die('Restricted access');
 	jQuery(function() {
 		jQuery('#fileuploader').on('submit', function( e ) {
 			e.preventDefault();
-			
 			console.log('click on btn-upload !');
-			
-			console.log();
-			
 			var url = "<?php echo JRoute::_('index.php?option=com_joonet&task=upload&format=json&'. JSession::getFormToken() . '=1'); ?>",
 				formData = new FormData( jQuery(this)[0] );
 			

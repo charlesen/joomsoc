@@ -51,21 +51,21 @@ $doc->addStyleSheet( $joonetAsset . '/css/joonet.css');
 //JHtml::_('bootstrap.loadCss', false, $this->direction);
 
 // Adjusting content width
-if ($this->countModules('position-7') && $this->countModules('position-8'))
-{
-	$span = "span6";
+$sideClass = "";
+if ($this->countModules('pos-sideleft') && $this->countModules('pos-sideright')) {
+	$sideClass = " col-md-3";
+  $mainClass = " col-md-6";
 }
-elseif ($this->countModules('position-7') && !$this->countModules('position-8'))
-{
-	$span = "span9";
+elseif (!$this->countModules('pos-sideleft') && $this->countModules('pos-sideright')) {
+	$sideClass = " col-md-3";
+  $mainClass = " col-md-9";
 }
-elseif (!$this->countModules('position-7') && $this->countModules('position-8'))
-{
-	$span = "span9";
+elseif ($this->countModules('pos-sideleft') && !$this->countModules('pos-sideright')) {
+	$sideClass = " col-md-3";
+  $mainClass = " col-md-9";
 }
-else
-{
-	$span = "span12";
+else {
+	$mainClass = " col-md-6 col-md-offset-3";
 }
 
 // Logo file or site title param
@@ -152,7 +152,7 @@ else
     							<?php echo '<div class="site-description">' . htmlspecialchars($this->params->get('sitedescription')) . '</div>'; ?>
     						<?php endif; ?>
     					</a>
-    			</div><!--.os -->
+    			</div><!--.navbar-header -->
     			<div class="collapse navbar-collapse">
 						<jdoc:include type="modules" name="position-1" style="none" /> <!--/main-menu -->
   					<jdoc:include type="modules" name="position-4" style="none" /> <!--/dropdown-menu -->
@@ -164,28 +164,28 @@ else
   
 	<!-- Body -->
 	<div id="page-body" class="container-fluid">
+	  <jdoc:include type="modules" name="banner" style="xhtml" />
 		<div class="row">
-			<jdoc:include type="modules" name="banner" style="xhtml" />
-			<?php if ($this->countModules('position-8')) : ?>
+			<?php if ($this->countModules('pos-sideleft')) : ?>
 				<!-- Begin Sidebar -->
-				<div id="sidebar" class="go"> <!-- -->
+				<div id="sideleft" class="aside col-xs-12<?php echo $sideClass?>"> <!-- -->
 					<div class="sidebar-nav">
-						<jdoc:include type="modules" name="position-8" style="xhtml" />
+						<jdoc:include type="modules" name="pos-sideleft" style="xhtml" />
 					</div>
 				</div>
 				<!-- End Sidebar -->
 			<?php endif; ?>
-			<div id="content" role="main">
+			<div id="content" role="main" class="col-xs-12<?php echo $mainClass?>">
 				<!-- Begin Content -->
-				<jdoc:include type="modules" name="position-3" style="xhtml" />
+				<jdoc:include type="modules" name="pos-main" style="xhtml" />
 				<jdoc:include type="message" />
 				<jdoc:include type="component" />
 				<!-- End Content -->
 			</div>
-			<?php if ($this->countModules('position-7')) : ?>
-				<div id="aside" class="go">
+			<?php if ($this->countModules('pos-sideright')) : ?>
+				<div id="sideright" class="aside col-xs-12<?php echo $sideClass?>">
 					<!-- Begin Right Sidebar -->
-					<jdoc:include type="modules" name="position-7" style="well" />
+					<jdoc:include type="modules" name="pos-sideright" style="xhtml" />
 					<!-- End Right Sidebar -->
 				</div>
 			<?php endif; ?>

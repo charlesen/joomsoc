@@ -27,7 +27,7 @@ class JoonetViewProfile extends JViewLegacy
 	function display($tpl = null)
 	{
 		// Assign data to the view
-		$this->msg = 'JoomSoc Profile';
+		$this->msg = $this->get('msg');
 		
 		$user = JFactory::getUser();
 		

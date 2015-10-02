@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Administrator
- * @subpackage  com_helloworld
+ * @subpackage  com_joonet
  *
  * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
@@ -11,11 +11,11 @@
 defined('_JEXEC') or die('Restricted access');
  
 /**
- * JoomSoc Model
+ * Joonet Model
  *
  * @since  0.0.1
  */
-class JoomSocModelCommunity extends JModelItem
+class JoonetModelProfile extends JModelItem
 {
 	/**
 	 * @var string message
@@ -31,7 +31,7 @@ class JoomSocModelCommunity extends JModelItem
 	{
 		if (!isset($this->message))
 		{
-			$this->message = 'JoomSoc Model Profile';
+			$this->message = 'Joonet Model Profile, From Model';
 		}
  
 		return $this->message;

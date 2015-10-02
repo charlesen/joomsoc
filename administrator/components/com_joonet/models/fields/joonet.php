@@ -25,13 +25,13 @@ class JFormFieldJoonet extends JFormFieldList
 	protected $type = 'Hello Joonet Form Field';
 	
 	/**
-	** Method to get stuffs from JoomSoc
+	** Method to get stuffs from Joonet
 	**/
 	
 	protected function getOptions() {
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		$query->select('id, greeting');
+		$query->select('id, user_id, content');
 		$query->from('#__joonet');
 		$db->setQuery((string) $query);
 		$messages = $db->loadObjectList();
@@ -41,7 +41,7 @@ class JFormFieldJoonet extends JFormFieldList
 		{
 			foreach ($messages as $message)
 			{
-				$options[] = JHtml::_('select.option', $message->id, $message->greeting);
+				$options[] = JHtml::_('select.option', $message->id, $message->content);
 			}
 		}
  
