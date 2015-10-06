@@ -20,30 +20,36 @@ $document = JFactory::getDocument();
 $document->addScript( $this->assetPath. '/js/joonet.js' );
 
 ?>
-<ul class="ca qp anx">
-  <li class="qg b aml">
-    <div class="input-group">
-        <form class="form-inline" id="form-status">
-  	       <div class="input-group">
-  						<label class="sr-only"><?php echo JText::_('COM_JOONET_WHATSNEW') ?></label>
-  						<input type="text" class="form-control" name="content" id="whatsnew" placeholder="<?php echo JText::_('COM_JOONET_WHATSNEW') ?>" />
-  						<?php echo JHtml::_('form.token'); ?>
-  						<input type="hidden" name="post-photo" id="post-photo" />
-  						<input type="hidden" name="post-video" id="post-video" />
-  						<div class="fj">
-  						  <button type="submit" class="cg fm btn btn-default btn-submit" disabled="disabled">
-  							  <span><?php echo JText::_('COM_JOONET_POST_TEXT') ?></span>
-  							</button>
-  						</div>
-  					</div>
-  					<div class="input-group">
-  						<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_PHOTO') ?>" id="photoModalBtn">
-  							<span class="glyphicon glyphicon-camera"></span>
-  						</button><!--Add Photos -->
-  						<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_VIDEO') ?>">
-  							<span class="glyphicon glyphicon-play-circle"></span>
-  						</button><!--Add Video : youtube, Vimeo, Dailyvotion,... -->
-  					</div>
+<ul class="post-list">
+  <li class="post">
+    <div class="form-group">
+        <form id="form-status">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="input-group">
+      						<label class="sr-only"><?php echo JText::_('COM_JOONET_WHATSNEW') ?></label>
+      						<textarea class="form-control" name="content" id="whatsnew" placeholder="<?php echo JText::_('COM_JOONET_WHATSNEW') ?>"></textarea>
+      						<?php echo JHtml::_('form.token'); ?>
+      						<input type="hidden" name="post-photo" id="post-photo" />
+      						<input type="hidden" name="post-video" id="post-video" />
+      						<div class="input-group-btn">
+      						  <button type="submit" class="cg fm btn btn-default btn-submit" disabled="disabled">
+      							  <span><?php echo JText::_('COM_JOONET_POST_TEXT') ?></span>
+      							</button>
+      						</div>
+      					</div><!-- /.input-group -->
+              </div><!-- /.col-xs-12 -->
+              <div class="col-xs-12">
+                <div class="input-group">
+      						<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_PHOTO') ?>" id="photoModalBtn">
+      							<span class="glyphicon glyphicon-camera"></span>
+      						</button><!--Add Photos -->
+      						<button type="button" class="btn btn-default" aria-label="<?php echo JText::_('COM_JOONET_ADD_VIDEO') ?>">
+      							<span class="glyphicon glyphicon-play-circle"></span>
+      						</button><!--Add Video : youtube, Vimeo, Dailyvotion,... -->
+      					</div><!-- /.input-group -->
+              </div><!-- /.col-xs-12 -->
+            </div>
   					<div class="modal fade" id="photoModal" tabindex="-1" role="dialog" aria-labelledby="photoModal"></div><!--/Photo modal -->
   					<div class="col-md-12" id="post-preview">
   						<p id="post-preview-text"></p>
@@ -53,8 +59,8 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
     </div>
   </li>
   <?php foreach ($this->items as $item) : ?>
-	<li class="qg b aml">
-		<a class="qk" href="<?php echo JRoute::_('index.php?option=com_joomsoc&view=profile&username='.$item->username) ?>">
+	<li class="post">
+		<a class="qk" href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&username='.$item->username) ?>">
 			<img class="qi cu" src="<?php echo $this->assetPath ?>/images/profile-default.png" />
 		</a>
 		<div class="qh">
@@ -64,7 +70,7 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
 			<div class="post-item">
 				<?php echo $item->content; ?>
 				<?php if ( $item->photo ) : ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=post&postid='.$item->id) ?>">
+				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=status&postid='.$item->id) ?>">
 					<img class="img-responsive" src="<?php echo $item->photo ?>" />
 				</a>
 				<?php endif; ?>
@@ -78,6 +84,8 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
 	  
 	  // Input text realtime validation
 	  $('#whatsnew').keyup(function(){
+	    
+ 
       //$(this).next().text($(this).val().length < 5 ? "<?php echo JText::_('COM_JOONET_SUGGESTIONS') ?>" : "");
       if ( $(this).val() !== ''  ) {
         console.log($(this).val());

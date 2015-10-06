@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 JHtml::_('jquery.framework');
 JHtml::_('script', 'system/html5fallback.js', false, true);
 
+/**
 if ($width)
 {
 	$moduleclass_sfx .= ' ' . 'mod_search' . $module->id;
@@ -23,12 +24,12 @@ if ($width)
 else
 {
 	$width = '';
-}
+}**/
 ?>
 <div class="search<?php echo $moduleclass_sfx ?>">
 	<form action="<?php echo JRoute::_('index.php');?>" method="post" class="navbar-form navbar-right" role="search"><!--.form-inline ox oh i-->
 		<?php
-			//$output = '<label for="mod-search-searchword" class="element-invisible">' . $label . '</label> ';
+			$output = '<label for="mod-search-searchword" class="sr-only">' . $label . '</label> ';
 			$output .= '<input name="searchword" id="mod-search-searchword" maxlength="' . $maxlength . '"  class="form-control" type="search" data-action="grow"' . $width;
 			$output .= ' placeholder="' . $text . '" />';
 

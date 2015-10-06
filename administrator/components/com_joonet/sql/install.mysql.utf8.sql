@@ -23,8 +23,6 @@ DROP TABLE IF EXISTS `#__joonet_user_details`;
 CREATE TABLE `#__joonet_user_details` (
 	`id`      INT(11) NOT NULL AUTO_INCREMENT,
 	`user_id` INT(11) NOT NULL,
-	`username` VARCHAR(25) NOT NULL,
-	`fullname` VARCHAR(25),
 	`gender` CHAR(1),
 	`bio` VARCHAR(140),
 	`phone` VARCHAR(25),
@@ -32,8 +30,6 @@ CREATE TABLE `#__joonet_user_details` (
 	`city` VARCHAR(25),
 	`country` VARCHAR(25),
 	`location` VARCHAR(25),
-	`created_at` TIMESTAMP DEFAULT 0,
-	`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`)
 );
 

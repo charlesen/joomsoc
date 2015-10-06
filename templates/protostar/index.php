@@ -134,17 +134,16 @@ else
 	. ($params->get('fluidContainer') ? ' fluid' : '');
 ?>">
 
-  
 	<?php if ($this->countModules('position-1')) : ?>
 		<nav class="navbar navbar-fixed-top" role="navigation">
 			<div class="container-fluid">
 			    <!-- Header -->
     			<div class="navbar-header">
-    			    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="cv">Navigation</span>
-                <span class="ow"></span>
-                <span class="ow"></span>
-                <span class="ow"></span>
+    			    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Menu</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
               </button>
               <a class="navbar-brand" href="<?php echo $this->baseurl; ?>/"><!--.brand -->
     						<?php echo $logo; ?>
@@ -199,7 +198,7 @@ else
   			<hr />
   			<jdoc:include type="modules" name="footer" style="none" />
   			<p class="pull-right">
-  				<a href="#top" id="back-top">
+  				<a href="#page-body" id="back-top">
   					<?php echo JText::_('TPL_PROTOSTAR_BACKTOTOP'); ?>
   				</a>
   			</p>
