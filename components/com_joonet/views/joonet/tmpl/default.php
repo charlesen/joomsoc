@@ -20,8 +20,8 @@ $document = JFactory::getDocument();
 $document->addScript( $this->assetPath. '/js/joonet.js' );
 
 ?>
-<ul class="post-list">
-  <li class="post">
+<ul class="posts-list">
+  <li class="post post-list-header">
     <div class="form-group">
         <form id="form-status">
             <div class="row">
@@ -60,22 +60,26 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
   </li>
   <?php foreach ($this->items as $item) : ?>
 	<li class="post">
-		<a class="qk" href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&username='.$item->username) ?>">
-			<img class="qi cu" src="<?php echo $this->assetPath ?>/images/profile-default.png" />
-		</a>
-		<div class="qh">
-			<div class="qo">
-				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&username='.$item->username) ?>"><?php echo $item->name ?></a>
-			</div>						
-			<div class="post-item">
-				<?php echo $item->content; ?>
-				<?php if ( $item->photo ) : ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=posts&postid='.$item->id) ?>">
-					<img class="img-responsive" src="<?php echo $item->photo ?>" />
-				</a>
-				<?php endif; ?>
-			</div>
-		</div>
+	  <div class="media">
+	    <div class="media-left">
+  	    <a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&username='.$item->username) ?>">
+    			<img class="media-object img-circle img-thumbnail" src="<?php echo $this->assetPath ?>/images/profile-default.png" />
+    		</a>
+  	  </div><!--/.media-left -->
+  		<div class="media-body">
+  			<h5 class="media-heading">
+  				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&username='.$item->username) ?>"><?php echo $item->name ?></a>
+  			</h5>						
+  			<div class="post-item">
+  				<?php echo $item->content; ?>
+  				<?php if ( $item->photo ) : ?>
+  				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=posts&postid='.$item->id) ?>">
+  					<img class="img-responsive" src="<?php echo $item->photo ?>" />
+  				</a>
+  				<?php endif; ?>
+  			</div>
+  		</div><!--/.media-body -->
+	  </div><!--/.media -->
 	</li>
 	<?php endforeach; ?>
 </ul><!--What's new ? -->
@@ -111,7 +115,7 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
     					$("#post-photo").val('');
     					$("#post-preview-img").html('');
     					
-    					$('.item-list').prepend(res);
+    					$('.post-list-header').after( '<li class="post">' + res + '</li>');
     					
     					// Add item in the list
     					//updateViewList ( res );

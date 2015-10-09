@@ -102,12 +102,12 @@ a:focus {
 
 /** Posts list**/
 
-ul.post-list {
+ul.posts-list {
   padding: 0;
   list-style: none;
 }
 
-ul.post-list>li.post {
+ul.posts-list>li.post {
   overflow: visible;
   padding: 20px !important;
   position: relative;
@@ -118,13 +118,13 @@ ul.post-list>li.post {
   zoom: 1;
 }
 
-ul.post-list>li.post:first-child {
+ul.posts-list>li.post:first-child {
     border-top-right-radius: 4px;
     border-top-left-radius: 4px;
     margin-top: 0;
 }
 
-ul.post-list>li.post:first-child>.form-group  {
+ul.posts-list>li.post:first-child>.form-group  {
   margin-bottom: 0;
 }
 
@@ -135,11 +135,7 @@ ul.post-list>li.post:first-child>.form-group  {
 
 #form-status {
 	width:100%;
-}
-
-#form-status button[type="submit"] {
-	width:100px;
-	max-width:100%;
+	display: inline-block;
 }
 
 #post-preview-img img {

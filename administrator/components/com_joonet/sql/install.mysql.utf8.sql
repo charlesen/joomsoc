@@ -39,8 +39,8 @@ CREATE TABLE `#__joonet_user_follows` (
 	`follower_id` INT(11) NOT NULL,
 	`following_id` INT(11) NOT NULL,
 	`active` TINYINT(1) DEFAULT 1,
-	`created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
-	`updated_at` DATETIME,
+	`created_at` TIMESTAMP DEFAULT 0,
+	`updated_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY (`id`)
 );
 

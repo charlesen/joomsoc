@@ -45,7 +45,7 @@ class JoonetController extends JControllerLegacy {
 				if ( $data->id ) {
 					$data->user = $user;
 					$data->assetPath = JURI::base(true). '/components/com_joonet/assets';
-					$view = &$this->getView('status', 'html');
+					$view = $this->getView('posts', 'html');
 					$view->assignRef('item', $data);
 					$view->display();
 				}

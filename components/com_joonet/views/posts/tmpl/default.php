@@ -10,7 +10,7 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 ?>
-<div class="media thumbnail">
+<div class="media">
 	<div class="media-left">
 		<a href="<?php echo JRoute::_('index.php?option=com_joomsoc&view=profile&username='.$this->item->user->username) ?>">
 			<img class="media-object img-circle img-thumbnail" src="<?php echo $this->item->assetPath ?>/images/profile-default.png" />

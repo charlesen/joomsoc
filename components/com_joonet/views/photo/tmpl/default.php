@@ -24,7 +24,7 @@ defined('_JEXEC') or die('Restricted access');
 				<hr />
 				<div class="form-group text-center">
 					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo JText::_('COM_JOONET_ACTION_CLOSE') ?></button>
-					<button type="submit" class="btn btn-primary" id="btn-upload"><?php echo JText::_('COM_JOONET_ACTION_ADD') ?></button>
+					<button type="submit" data-loading-text="<?php echo JText::_('COM_JOONET_ACTION_UPLOADING') ?>" class="btn btn-primary" id="btn-upload"><?php echo JText::_('COM_JOONET_ACTION_ADD') ?></button>
 				</div>
 			</form>
 		</div>
@@ -37,6 +37,9 @@ defined('_JEXEC') or die('Restricted access');
 		jQuery('#fileuploader').on('submit', function( e ) {
 			e.preventDefault();
 			console.log('click on btn-upload !');
+			
+			// Button progress
+			var $btnUpload = jQuery("#btn-upload").button('loading');
 			var url = "<?php echo JRoute::_('index.php?option=com_joonet&task=upload&format=json&'. JSession::getFormToken() . '=1'); ?>",
 				formData = new FormData( jQuery(this)[0] );
 			
@@ -51,6 +54,9 @@ defined('_JEXEC') or die('Restricted access');
 				contentType:false,
 				processData:false,
 				success : function ( res ) {
+				  // Btn upload reset
+				  $btnUpload.button('reset')
+				  
 					// Close modal
 					jQuery('#photoModal').modal('hide');
 					
