@@ -28,14 +28,17 @@ class JoonetController extends JControllerLegacy {
 			
 			if ( $user->id ) {
 				$input = JFactory::getApplication()->input;
-				$model = &$this->getModel();
+				$model = $this->getModel();
 				
 				// Prepare data
 				$data = new stdClass();
 				$data->user_id = $user->id;
+				$data->created_at = date("Y-m-d H:i:s", time());
 				$data->content = $input->getString('content');
 				$data->photo = $input->getString('post-photo', '');
 				$data->video = $input->getString('post-video', '');
+				
+				//print_r($data); exit;
 				
 				$data->id = $model->saveStatus($data);
 				

@@ -33,6 +33,17 @@ CREATE TABLE `#__joonet_user_details` (
 	PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS `#__joonet_user_follows`;
+CREATE TABLE `#__joonet_user_follows` (
+	`id`      INT(11) NOT NULL AUTO_INCREMENT,
+	`follower_id` INT(11) NOT NULL,
+	`following_id` INT(11) NOT NULL,
+	`active` TINYINT(1) DEFAULT 1,
+	`created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
+	`updated_at` DATETIME,
+	PRIMARY KEY (`id`)
+);
+
 DROP TABLE IF EXISTS `#__joonet_socialauth`;
 CREATE TABLE `#__joonet_socialauth` (
 	`id`      INT(11) NOT NULL AUTO_INCREMENT,

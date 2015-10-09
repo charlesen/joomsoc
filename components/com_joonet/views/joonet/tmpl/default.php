@@ -70,7 +70,7 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
 			<div class="post-item">
 				<?php echo $item->content; ?>
 				<?php if ( $item->photo ) : ?>
-				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=status&postid='.$item->id) ?>">
+				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=posts&postid='.$item->id) ?>">
 					<img class="img-responsive" src="<?php echo $item->photo ?>" />
 				</a>
 				<?php endif; ?>
@@ -85,7 +85,6 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
 	  // Input text realtime validation
 	  $('#whatsnew').keyup(function(){
 	    
- 
       //$(this).next().text($(this).val().length < 5 ? "<?php echo JText::_('COM_JOONET_SUGGESTIONS') ?>" : "");
       if ( $(this).val() !== ''  ) {
         console.log($(this).val());
@@ -99,7 +98,7 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
 		$("#form-status").on('submit', function ( e ) {
 			e.preventDefault();
 			if ( $('#whatsnew').val() !== "" ) {
-			    var url = "<?php echo JRoute::_('index.php?option=com_joonet&task=status&format=json&'. JSession::getFormToken() . '=1'); ?>",
+			    var url = "<?php echo JRoute::_('/index.php?option=com_joonet&task=status&format=json&'. JSession::getFormToken() . '=1'); ?>",
 			    data=$(this).serialize();
 			    jQuery.ajax({
     				type:"post",
@@ -132,7 +131,7 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
 			$('#photoModal').modal();
 			
 			// Load partial view
-			var partialUrl = "<?php echo JRoute::_('index.php?option=com_joonet&view=photo&format=raw') ?>";			
+			var partialUrl = "<?php echo JURI::root( true ) ?>index.php?option=com_joonet&view=photo&format=raw";			
 			if ( !photoModalLoaded ) {
 				photoModalLoaded = true;
 				$('#photoModal').load( partialUrl );

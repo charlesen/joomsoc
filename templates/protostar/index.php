@@ -174,7 +174,7 @@ else
 				</div>
 				<!-- End Sidebar -->
 			<?php endif; ?>
-			<div id="content" role="main" class="col-xs-12<?php echo $mainClass?>">
+			<div id="content" role="main" class="col-xs-12 container<?php echo $mainClass?>">
 				<!-- Begin Content -->
 				<jdoc:include type="modules" name="pos-main" style="xhtml" />
 				<jdoc:include type="message" />

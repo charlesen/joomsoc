@@ -48,7 +48,7 @@ a:focus {
 }
 
 #content {
-  padding: 0;
+  padding: 0 30px;
 }
 
 .search {
@@ -103,7 +103,7 @@ a:focus {
 /** Posts list**/
 
 ul.post-list {
-  padding: 0 20px;
+  padding: 0;
   list-style: none;
 }
 

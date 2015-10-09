@@ -12,7 +12,7 @@ defined('_JEXEC') or die;
 
 <div class="card">
   <img class="card-img-top img-responsive" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150" alt="Card image cap">
-  <div class="card-block">
+  <div class="card-block text-center">
     <h4 class="card-title">
       <a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&username='.$userinfos->username) ?>"><?php echo $userinfos->name ?></a>
     </h4>
