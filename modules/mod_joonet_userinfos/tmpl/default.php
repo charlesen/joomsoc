@@ -25,7 +25,17 @@ defined('_JEXEC') or die;
   </div>
 </div>
 
-<a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'.JSession::getFormToken(). '=1') ?>" class="button button-default">
-		<span class="glyphicon glyphicon-off"></span>
-		<?php echo JText::_('COM_JOONET_LOGOUT') ?>
-	</a>
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
+  <div class="btn-group text-center" role="group">
+    <a href="<?php echo JRoute::_('index.php?option=com_users&task=user.logout&'.JSession::getFormToken(). '=1') ?>" class="button button-default">
+    	<span class="glyphicon glyphicon-off"></span>
+    	<?php echo JText::_('COM_JOONET_LOGOUT') ?>
+    </a>
+  </div>
+  <div class="btn-group text-center" role="group">
+    <a href="<?php echo JRoute::_('/index.php?option=com_joonet&task=settings&format=json&'. JSession::getFormToken() . '=1'); ?>" class="button button-default" data-toggle="modal" data-target="#userSettingsModal">
+    	<span class="glyphicon glyphicon-user"></span>
+    	<?php echo JText::_('COM_JOONET_USER_SETTINGS') ?>
+    </a>
+  </div>
+</div>

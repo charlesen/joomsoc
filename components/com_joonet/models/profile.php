@@ -36,4 +36,24 @@ class JoonetModelProfile extends JModelItem
  
 		return $this->message;
 	}
+	
+	public function getUser ( $userid = null  ) {
+	  $user = isset($userid) ? JFactory::getUser($userid) : JFactory::getUser();
+	  $user = (array) $user;
+	  
+	  $query = $db->getQuery(true)
+			->select('*')
+			->from($db->quoteName('#__joonet_user_details', 'a'))
+      ->where($db->quoteName('a.user_id') . ' = '. $user->id);
+		
+		$db->setQuery($query);
+
+		try {
+		  $userDetails = (array) $db->loadObjectList();
+		  return array_merge($user, $userDetails);
+		} catch (RuntimeException $e) {
+			JFactory::getApplication()->enqueueMessage(JText::_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
+			return array();
+		}
+	}
 }

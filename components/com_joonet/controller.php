@@ -78,4 +78,16 @@ class JoonetController extends JControllerLegacy {
 			echo new JResponseJson($e);
 		}
 	}
+	
+	function settings () {
+	  $user = JFactory::getUser();
+	  if ( $user->id ) {
+				//$input = JFactory::getApplication()->input;
+				$model = $this->getModel("profile");
+				$userinfos = $model->getUser( $user->id );
+				$view = $this->getView('settings', 'html');
+				$view->assignRef('user', $userinfos);
+				$view->display();
+	  }
+	}
 }
