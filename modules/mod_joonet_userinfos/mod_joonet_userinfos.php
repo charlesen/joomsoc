@@ -12,8 +12,11 @@ defined('_JEXEC') or die;
 // Include the latest functions only once
 require_once __DIR__ . '/helper.php';
 
-$shownumber = $params->get('shownumber', 5);
-$userinfos = ModJoonetUserinfostHelper::getUserInfos($params)[0];
+//$shownumber = $params->get('shownumber', 5);
+$userinfos = ModJoonetUserinfostHelper::getUser($params);
+
+//print_r($userinfos); exit;
+
 $linknames = $params->get('linknames', 0);
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 

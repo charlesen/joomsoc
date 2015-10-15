@@ -27,8 +27,9 @@ class JoonetViewProfile extends JViewLegacy
 	function display($tpl = null)
 	{
 		// Assign data to the view
-		$this->msg = $this->get('msg');
-		
+		$model      = $this->getModel();
+		$this->user = $model->getUser(); // $this->user = $this->get('user');
+
 		$user = JFactory::getUser();
 		
 		if ( !$user->get('guest') ) {

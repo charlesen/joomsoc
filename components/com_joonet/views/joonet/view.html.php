@@ -36,8 +36,6 @@ class JoonetViewJoonet extends JViewLegacy
 			// Assign data to the view
 			$this->items = $this->get('items');
 			
-			//print_r($this->items); exit;
-	 
 			// Check for errors.
 			if (count($errors = $this->get('Errors')))
 			{

@@ -41,10 +41,11 @@ class JoonetModelProfile extends JModelItem
 	  $user = isset($userid) ? JFactory::getUser($userid) : JFactory::getUser();
 	  $user = (array) $user;
 	  
+	  $db = JFactory::getDbo();
 	  $query = $db->getQuery(true)
 			->select('*')
 			->from($db->quoteName('#__joonet_user_details', 'a'))
-      ->where($db->quoteName('a.user_id') . ' = '. $user->id);
+      ->where($db->quoteName('a.user_id') . ' = '. $user['id']);
 		
 		$db->setQuery($query);
 

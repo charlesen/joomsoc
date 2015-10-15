@@ -21,7 +21,7 @@ class JoonetController extends JControllerLegacy {
 	
 	
 	// Save User status
-	function status() {		
+	function status() {
 		JSession::checkToken() or jexit(JTEXT::_('JInvalid_Token'));
 		try {
 			$user = JFactory::getUser();
@@ -85,8 +85,8 @@ class JoonetController extends JControllerLegacy {
 				//$input = JFactory::getApplication()->input;
 				$model = $this->getModel("profile");
 				$userinfos = $model->getUser( $user->id );
-				$view = $this->getView('settings', 'html');
-				$view->assignRef('user', $userinfos);
+				$view = $this->getView('settings', 'raw');
+				$view->assignRef('userinfos', $userinfos);
 				$view->display();
 	  }
 	}

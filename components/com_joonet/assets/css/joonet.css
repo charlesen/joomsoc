@@ -151,7 +151,12 @@ ul.posts-list>li.post:first-child>.form-group  {
 	height:45px;
 }
 
-/** Bootstrap Cards **/
+/** Bootstrap Override & Components **/
+.btn-primary {
+    color: #fff;
+    background-color: #3097d1;
+    border-color: #1c73a5;
+}
 .card {
   position: relative;
   margin-bottom: .75rem;

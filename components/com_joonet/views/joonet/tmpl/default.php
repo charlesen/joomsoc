@@ -62,13 +62,13 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
 	<li class="post">
 	  <div class="media">
 	    <div class="media-left">
-  	    <a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&username='.$item->username) ?>">
+  	    <a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&id='.$item->user_id) ?>">
     			<img class="media-object img-circle img-thumbnail" src="<?php echo $this->assetPath ?>/images/profile-default.png" />
     		</a>
   	  </div><!--/.media-left -->
   		<div class="media-body">
   			<h5 class="media-heading">
-  				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&username='.$item->username) ?>"><?php echo $item->name ?></a>
+  				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&id='.$item->user_id) ?>"><?php echo $item->name ?></a>
   			</h5>						
   			<div class="post-item">
   				<?php echo $item->content; ?>
@@ -102,7 +102,7 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
 		$("#form-status").on('submit', function ( e ) {
 			e.preventDefault();
 			if ( $('#whatsnew').val() !== "" ) {
-			    var url = "<?php echo JRoute::_('/index.php?option=com_joonet&task=status&format=json&'. JSession::getFormToken() . '=1'); ?>",
+			    var url = "<?php echo '/index.php?option=com_joonet&task=status&format=json&'. JSession::getFormToken() . '=1'; ?>",
 			    data=$(this).serialize();
 			    jQuery.ajax({
     				type:"post",
@@ -115,10 +115,8 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
     					$("#post-photo").val('');
     					$("#post-preview-img").html('');
     					
-    					$('.post-list-header').after( '<li class="post">' + res + '</li>');
-    					
     					// Add item in the list
-    					//updateViewList ( res );
+    					$('.post-list-header').after( '<li class="post">' + res + '</li>');
     				},
     				error : function ( error ) {
     					console.log(error);

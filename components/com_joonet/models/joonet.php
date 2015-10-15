@@ -162,7 +162,4 @@ class JoonetModelJoonet extends JModelItem
 		return $db->execute();
 	}
 	
-	public function getUserDetails($id=null) {
-		// If null, return current details
-	}
 }

@@ -15,6 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  *
  * @since  0.0.1
  */
+
 class JoonetViewSettings extends JViewLegacy
 {
 	/**
@@ -29,8 +30,7 @@ class JoonetViewSettings extends JViewLegacy
 		$user = JFactory::getUser();
 		
 		if ( !$user->get('guest') ) {
-		  // Assign data to the view
-			$this->items = $this->get('items');
+		  //$input = JFactory::getApplication()->input;
 			// Display the view
 			parent::display($tpl);
 		} else {

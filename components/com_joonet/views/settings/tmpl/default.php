@@ -10,26 +10,29 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 ?>
-<div class="modal-dialog" role="document">
-	<div class="modal-content">
-		<div class="modal-header">
-			<h4 class="modal-title"><?php echo JText::_('COM_JOONET_USER_SETTINGS_LABEL') ?></h4>
-		</div>
-		<div class="modal-body">
-			<form name="upload" id="userseting" method="post" enctype="multipart/form-data">
-				<div class="form-group">
-					<?php print_r( $this->user )?>
-				</div>
-				<hr />
-				<div class="form-group text-center">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo JText::_('COM_JOONET_ACTION_CLOSE') ?></button>
-					<button type="submit" data-loading-text="<?php echo JText::_('COM_JOONET_ACTION_SAVING') ?>" class="btn btn-primary" id="btn-upload"><?php echo JText::_('COM_JOONET_ACTION_SAVE') ?></button>
-				</div>
-			</form>
-		</div>
-		<div class="modal-footer"></div>
+<form name="usersetings" id="usersetings" method="post" enctype="multipart/form-data">
+	<div class="form-group">
+		<?php if ($this->userinfos) : ?>
+		  <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $this->userinfos['email'] ?>" placeholder="<?php echo $this->userinfos['email'] ?>">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" value="<?php echo $this->userinfos['name'] ?>" placeholder="<?php echo $this->userinfos['name'] ?>">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+		<?php endif; ?>
 	</div>
-</div>
+	<hr />
+	<div class="form-group text-center">
+		<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo JText::_('COM_JOONET_ACTION_CLOSE') ?></button>
+		<button type="submit" data-loading-text="<?php echo JText::_('COM_JOONET_ACTION_SAVING') ?>" class="btn btn-primary" id="btn-upload"><?php echo JText::_('COM_JOONET_ACTION_SAVE') ?></button>
+	</div>
+</form>
 
 <script>
 	jQuery(function() {
