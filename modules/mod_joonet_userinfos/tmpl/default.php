@@ -13,7 +13,7 @@ $sitename = $config->get('sitename');
 ?>
 <?php if ( $userinfos ): ?>
   <div class="card">
-    <img class="card-img-top img-responsive" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150" alt="Card image cap">
+    <div class="card-img-top" style="background-image:url('https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150')"></div>
     <div class="card-block text-center">
       <h4 class="card-title">
         <a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&id='.$userinfos['user_id']) ?>"><?php echo $userinfos['name'] ?></a>
@@ -58,7 +58,7 @@ $sitename = $config->get('sitename');
   			<h4 class="modal-title text-center" id="settingsModalLabel"><?php echo JText::_('COM_JOONET_USER_SETTINGS_LABEL') ?></h4>
   		</div>
   		<div class="modal-body">
-  		  
+  		  <p class="text-center"><?php echo JText::_('COM_JOONET_LOADING') ?></p>
   		</div>
   		<div class="modal-footer"></div>
   	</div>
@@ -80,6 +80,8 @@ $sitename = $config->get('sitename');
   				  $modalBody.html(res);
   				},
   				error : function ( error ) {
+  				  var errorMsg = "<?php echo JText::_('COM_JOONET_SYSTEM_ERROR') ?>"  
+  					$modalBody.html( '<p class="text-danger">' + errorMsg + '</p>' );
   					console.log(error);
   				}
   		});

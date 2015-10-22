@@ -54,8 +54,11 @@ defined('_JEXEC') or die('Restricted access');
 				contentType:false,
 				processData:false,
 				success : function ( res ) {
+				  
+				  console.log(res);
+				  
 				  // Btn upload reset
-				  $btnUpload.button('reset')
+				  $btnUpload.button('reset');
 				  
 					// Close modal
 					jQuery('#photoModal').modal('hide');
@@ -64,6 +67,8 @@ defined('_JEXEC') or die('Restricted access');
 					jQuery("#post-preview-img").html( jQuery('<img />').attr("src", res.data ));
 				},
 				error : function ( error ) {
+				  // Btn upload reset
+				  $btnUpload.button('reset');
 					console.log(error);
 				}
 			});

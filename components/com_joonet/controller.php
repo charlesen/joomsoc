@@ -69,9 +69,12 @@ class JoonetController extends JControllerLegacy {
 			
 			// Upload file
 			$src = $photo['tmp_name'];
+			
 			$dest = "/components/com_joonet/assets/uploads/".$userId."/photos/".$filename;
 			$destFolder = JPATH_BASE . $dest;
 			if ( JFile::upload( $src, $destFolder ) ) {
+			  // Resize
+			  $this->resizeImage($destFolder);
 				echo new JResponseJson(JURI::base(true) . $dest);
 			}
 		} catch (Exception $e) {
@@ -79,12 +82,48 @@ class JoonetController extends JControllerLegacy {
 		}
 	}
 	
+	/**
+  * Resize an image and keep the proportions
+  * @author Allison Beckwith <allison@planetargon.com>
+  * @param string $filename
+  * @param integer $max_width
+  * @param integer $max_height
+  * @return image
+  */
+  function resizeImage($filename, $max_width=800, $max_height=600) {
+      
+      $image = new JImage($filename);
+      
+      $width  = $image->getWidth();
+      $height = $image->getheight();
+  
+      # taller
+      if ($height > $max_height) {
+          $width = ($max_height / $height) * $width;
+          $height = $max_height;
+      }
+  
+      # wider
+      if ($width > $max_width) {
+          $height = ($max_width / $width) * $height;
+          $width = $max_width;
+      }
+        
+      // Resize the image using the SCALE_INSIDE method
+      $image->resize($width, $height, false, JImage::SCALE_INSIDE);
+      
+      // Write it to disk
+      $image->toFile($filename);
+      
+      //return $image;
+  }
+	
 	function settings () {
 	  $user = JFactory::getUser();
 	  if ( $user->id ) {
 				//$input = JFactory::getApplication()->input;
 				$model = $this->getModel("profile");
-				$userinfos = $model->getUser( $user->id );
+				$userinfos = $model->getUser();
 				$view = $this->getView('settings', 'raw');
 				$view->assignRef('userinfos', $userinfos);
 				$view->display();

@@ -37,13 +37,14 @@ else
 
 // Add JavaScript Frameworks
 $doc->addScript($this->baseurl . '/templates/' . $this->template . '/js/template.js');
+$doc->addScript("https://cdn.ampproject.org/v0.js");
 
 // Add Stylesheets
 //$doc->addStyleSheet($this->baseurl . '/templates/' . $this->template . '/css/template.css');
 
 $joonetAsset = $this->baseurl . '/components/com_joonet/assets';
 $doc->addStyleSheet( $joonetAsset . '/bootstrap/css/bootstrap.min.css');
-$doc->addStyleSheet( $joonetAsset . '/css/toolkit.css');
+//$doc->addStyleSheet( $joonetAsset . '/css/toolkit.css');
 $doc->addStyleSheet( $joonetAsset . '/css/application.css');
 $doc->addStyleSheet( $joonetAsset . '/css/joonet.css');
 
@@ -83,7 +84,7 @@ else
 }
 ?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" amp>
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<jdoc:include type="head" />

@@ -50,7 +50,10 @@ class JoonetModelProfile extends JModelItem
 		$db->setQuery($query);
 
 		try {
-		  $userDetails = (array) $db->loadObjectList();
+		  $userDetails = (array) $db->loadObjectList()[0];
+		  
+		  //print_r($userDetails); exit;
+		  
 		  return array_merge($user, $userDetails);
 		} catch (RuntimeException $e) {
 			JFactory::getApplication()->enqueueMessage(JText::_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');

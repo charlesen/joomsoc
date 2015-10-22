@@ -18,7 +18,6 @@ $document = JFactory::getDocument();
 //$document->addStyleSheet( $this->assetPath. '/css/application.css');
 //$document->addStyleSheet( $this->assetPath. '/css/joonet.css');
 $document->addScript( $this->assetPath. '/js/joonet.js' );
-
 ?>
 <ul class="posts-list">
   <li class="post post-list-header">
@@ -33,7 +32,7 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
       						<input type="hidden" name="post-photo" id="post-photo" />
       						<input type="hidden" name="post-video" id="post-video" />
       						<div class="input-group-btn">
-      						  <button type="submit" class="cg fm btn btn-default btn-submit" disabled="disabled">
+      						  <button type="submit" class="btn btn-default btn-submit" disabled="disabled">
       							  <span><?php echo JText::_('COM_JOONET_POST_TEXT') ?></span>
       							</button>
       						</div>
@@ -63,7 +62,7 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
 	  <div class="media">
 	    <div class="media-left">
   	    <a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&id='.$item->user_id) ?>">
-    			<img class="media-object img-circle img-thumbnail" src="<?php echo $this->assetPath ?>/images/profile-default.png" />
+    			<amp-img class="media-object img-circle img-thumbnail" src="<?php echo $this->assetPath ?>/images/profile-default.png" alt="<?php echo JText::sprintf( 'COM_JOONET_USER_PHOTO_LABEL', $item->name ) ?>" height="45" width="45"></amp-img>
     		</a>
   	  </div><!--/.media-left -->
   		<div class="media-body">
@@ -71,10 +70,10 @@ $document->addScript( $this->assetPath. '/js/joonet.js' );
   				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&id='.$item->user_id) ?>"><?php echo $item->name ?></a>
   			</h5>						
   			<div class="post-item">
-  				<?php echo $item->content; ?>
+  				<?php echo preg_replace('/\#([a-z0-9]+)/i', '<a href="index.php?option=com_search&searchword=$1">#$1</a>', $item->content); ?>
   				<?php if ( $item->photo ) : ?>
   				<a href="<?php echo JRoute::_('index.php?option=com_joonet&view=posts&postid='.$item->id) ?>">
-  					<img class="img-responsive" src="<?php echo $item->photo ?>" />
+  					<img class="img-responsive" src="<?php echo $item->photo ?>"></amp-im
   				</a>
   				<?php endif; ?>
   			</div>
