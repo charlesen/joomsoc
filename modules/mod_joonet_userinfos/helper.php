@@ -20,25 +20,19 @@ defined('_JEXEC') or die;
 class ModJoonetUserinfostHelper {
   
 	public static function getUser ( $params  ) {
-	  //$jinput = JFactory::getApplication()->input;
-	  $db    = JFactory::getDbo();
-	  $user = (array) JFactory::getUser();
-	  
+	  $userDetails = array();
 		try {
-		  if ( $user['id'] ) {
-        $query = $db->getQuery(true)
-        ->select('*')
-        ->from($db->quoteName('#__joonet_user_details', 'a'))
-        ->where($db->quoteName('a.user_id') . ' = '. $user['id']);
-        
-        $db->setQuery($query);
-        $userDetails = (array) $db->loadObjectList()[0];
-        return array_merge($user, $userDetails);
-  	  }
+		  $user = isset($userid) ? JFactory::getUser($userid) : JFactory::getUser();
+		  if ( $user->id ) {
+  		  $profile = (array) JUserHelper::getProfile($user->id);
+  		  $userDetails['juser'] = (array) $user;
+  		  $userDetails['profile'] = $profile['profile'];
+		  } 
+		  return $userDetails;
 		} catch (RuntimeException $e) {
 			JFactory::getApplication()->enqueueMessage(JText::_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
+			return array();
 		}
-		return array();
 	}
 	
 }

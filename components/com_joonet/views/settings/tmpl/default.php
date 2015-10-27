@@ -10,85 +10,113 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 
+//print_r($this->userinfos); exit;
+
 ?>
 
-<form name="usersetings" id="usersetings" method="post" enctype="multipart/form-data">
-	<div class="form-group">
-		<?php if ($this->userinfos) : ?>
-		  <div class="form-group">
-        <label for="inputEmail" class="sr-only"><?php echo JText::_('COM_JOONET_USER_EMAIL') ?></label>
-        <input type="email" class="form-control" id="inputEmail" value="<?php echo $this->userinfos['email'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_EMAIL') ?>">
-      </div>
-      <div class="form-group">
-        <label for="inputUsername" class="sr-only"><?php echo JText::_('COM_JOONET_USER_NAME') ?></label>
-        <input type="text" class="form-control" id="inputUsername" value="<?php echo $this->userinfos['name'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_NAME') ?>">
-      </div>
-      <div class="form-group">
-        <label for="inputPhone" class="sr-only"><?php echo JText::_('COM_JOONET_USER_PHONE') ?></label>
-        <input type="text" class="form-control" id="inputPhone" value="<?php echo $this->userinfos['phone'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_PHONE') ?>">
-      </div>
-      <div class="form-group">
-        <label for="inputAddress" class="sr-only"><?php echo JText::_('COM_JOONET_USER_ADDRESS') ?></label>
-        <input type="text" class="form-control" id="inputAddress" value="<?php echo $this->userinfos['address'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_ADDRESS') ?>">
-      </div>
-      <div class="form-group">
-        <label for="inputCity" class="sr-only"><?php echo JText::_('COM_JOONET_USER_CITY') ?></label>
-        <input type="text" class="form-control" id="inputCity" value="<?php echo $this->userinfos['city'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_CITY') ?>">
-      </div>
-      <div class="form-group">
-        <label for="inputCountry" class="sr-only"><?php echo JText::_('COM_JOONET_USER_COUNTRY') ?></label>
-        <input type="text" class="form-control" id="inputCountry" value="<?php echo $this->userinfos['country'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_COUNTRY') ?>">
-      </div>
-      <div class="form-group">
-        <label for="inputLocation" class="sr-only"><?php echo JText::_('COM_JOONET_USER_LOCATION') ?></label>
-        <input type="text" class="form-control" id="inputLocation" value="<?php echo $this->userinfos['location'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_LOCATION') ?>">
-      </div>
-      <div class="form-group">
-        <label for="inputBio" class="sr-only"><?php echo JText::_('COM_JOONET_USER_BIO') ?></label>
-        <textarea class="form-control" id="inputBio" placeholder="<?php echo JText::_('COM_JOONET_USER_BIO') ?>" rows="3"><?php echo $this->userinfos['bio'] ?></textarea>
-      </div>
-      <div class="form-group">
-        <label for="inputPassword" class="sr-only"><?php echo JText::_('COM_JOONET_USER_PASSWORD') ?></label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="<?php echo JText::_('COM_JOONET_USER_PASSWORD') ?>">
-      </div>
-		<?php endif; ?>
-	</div>
-	<hr />
-	<div class="form-group text-center">
-		<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo JText::_('COM_JOONET_ACTION_CLOSE') ?></button>
-		<button type="submit" data-loading-text="<?php echo JText::_('COM_JOONET_ACTION_SAVING') ?>" class="btn btn-primary" id="btn-upload"><?php echo JText::_('COM_JOONET_ACTION_SAVE') ?></button>
-	</div>
-</form>
+
+<div id="userinfos-tabs">
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#params-basics" aria-controls="params-basics" role="tab" data-toggle="tab"><?php echo JText::_('COM_JOONET_PARAMS_TAB_BASICS') ?></a></li>
+    <li role="presentation"><a href="#params-profile" aria-controls="params-profile" role="tab" data-toggle="tab"><?php echo JText::_('COM_JOONET_PARAMS_TAB_PROFILE') ?></a></li>
+    <li role="presentation"><a href="#params-messages" aria-controls="params-messages" role="tab" data-toggle="tab"><?php echo JText::_('COM_JOONET_PARAMS_TAB_MESSAGES') ?></a></li>
+    <li role="presentation"><a href="#params-settings" aria-controls="params-settings" role="tab" data-toggle="tab"><?php echo JText::_('COM_JOONET_PARAMS_TAB_SETTINGS') ?></a></li>
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content" id="usersetings">
+    <!--<form name="usersetings" id="usersetings" method="post" enctype="multipart/form-data">-->
+      <div role="tabpanel" class="tab-pane active" id="params-basics">
+        <?php if ($this->userinfos['juser']) : ?>
+          <div class="form-group">
+            <label for="inputPhone" class="sr-only"><?php echo JText::_('COM_JOONET_USER_NAME') ?></label>
+            <input type="text" class="form-control" name="name" id="inputName" value="<?php echo $this->userinfos['juser']['name'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_NAME') ?>">
+          </div>
+          <div class="form-group">
+            <label for="inputPhone" class="sr-only"><?php echo JText::_('COM_JOONET_USER_USERNAME') ?></label>
+            <input type="text" class="form-control" name="username" id="inputUsername" value="<?php echo $this->userinfos['juser']['username'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_USERNAME') ?>">
+          </div>
+          <div class="form-group">
+            <label for="inputAddress" class="sr-only"><?php echo JText::_('COM_JOONET_USER_EMAIL') ?></label>
+            <input type="email" class="form-control" name="email" id="inputEmail" value="<?php echo $this->userinfos['juser']['email'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_EMAIL') ?>">
+          </div>
+          <div class="form-group">
+            <label for="inputCity" class="sr-only"><?php echo JText::_('COM_JOONET_USER_PASSWORD') ?></label>
+            <input type="password" class="form-control" name="password" id="inputPassword" value="" placeholder="<?php echo JText::_('COM_JOONET_USER_PASSWORD') ?>">
+          </div>
+    		<?php endif; ?>
+      </div><!--basics panel -->
+      <div role="tabpanel" class="tab-pane" id="params-profile">
+        	<div class="form-group">
+        		<?php if ($this->userinfos['profile']) : ?>
+              <div class="form-group">
+                <label for="inputPhone" class="sr-only"><?php echo JText::_('COM_JOONET_USER_PHONE') ?></label>
+                <input type="text" class="form-control" name="phone" id="inputPhone" value="<?php echo $this->userinfos['profile']['phone'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_PHONE') ?>">
+              </div>
+              <div class="form-group">
+                <label for="inputAddress" class="sr-only"><?php echo JText::_('COM_JOONET_USER_ADDRESS') ?></label>
+                <input type="text" class="form-control" name="address" id="inputAddress" value="<?php echo $this->userinfos['profile']['address1'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_ADDRESS') ?>">
+              </div>
+              <div class="form-group">
+                <label for="inputCity" class="sr-only"><?php echo JText::_('COM_JOONET_USER_CITY') ?></label>
+                <input type="text" class="form-control" name="city" id="inputCity" value="<?php echo $this->userinfos['profile']['city'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_CITY') ?>">
+              </div>
+              <div class="form-group">
+                <label for="inputCountry" class="sr-only"><?php echo JText::_('COM_JOONET_USER_COUNTRY') ?></label>
+                <input type="text" class="form-control" name="country" id="inputCountry" value="<?php echo $this->userinfos['profile']['country'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_COUNTRY') ?>">
+              </div>
+              <div class="form-group">
+                <label for="inputRegion" class="sr-only"><?php echo JText::_('COM_JOONET_USER_REGION') ?></label>
+                <input type="text" class="form-control" name="region" id="inputRegion" value="<?php echo $this->userinfos['profile']['region'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_REGION') ?>">
+              </div>
+              <div class="form-group">
+                <label for="inputAbout" class="sr-only"><?php echo JText::_('COM_JOONET_USER_ABOUTME') ?></label>
+                <textarea class="form-control" name="aboutme" id="inputAbout" placeholder="<?php echo JText::_('COM_JOONET_USER_ABOUTME') ?>" rows="3"><?php echo $this->userinfos['profile']['aboutme'] ?></textarea>
+              </div>
+        		<?php endif; ?>
+        	</div>
+        	<hr />
+      </div><!--profile panel -->
+      <div role="tabpanel" class="tab-pane" id="params-messages">...</div><!--messages panel -->
+      <div role="tabpanel" class="tab-pane" id="params-settings">...</div><!--settings panel -->
+    <!--</form> #usersetings -->
+  </div>
+
+</div><!--#userinfos-tabs -->
 
 <script>
 	jQuery(function() {
 	  
-    var $btnUpload = jQuery("#btn-upload").button('loading'), 
-    url = "<?php echo JRoute::_('index.php?option=com_joonet&task=upload&format=json&'. JSession::getFormToken() . '=1'); ?>";
+	  // Get User basics
+    var $btnParams = jQuery("#btn-save-settings"),
+        url = "index.php?option=com_joonet&task=settingssave&format=raw&<?php echo JSession::getFormToken() . '=1'; ?>";
 	  
-	  jQuery.ajax({
-				type:"post",
-				url:url,
-				xhr : function () {
-					return jQuery.ajaxSettings.xhr();
-				},
-				data:formData,
-				cache:false,
-				contentType:false,
-				processData:false,
-				success : function ( res ) {
-				  // Btn upload reset
-				  $btnUpload.button('reset')
-				  
-					// Close modal
-					jQuery('#photoModal').modal('hide');
-					
-					jQuery("#post-photo").val( res.data );
-					jQuery("#post-preview-img").html( jQuery('<img />').attr("src", res.data ));
-				},
-				error : function ( error ) {
-					console.log(error);
-				}
-			});
+	  $btnParams.on("click", function(){
+  	    // Loader
+  	    $btnParams.button('loading');
+  	    
+  	    var formData = {};
+  	    $('#usersetings .form-control').each(function() {
+  	        formData[jQuery(this).attr("name")]= jQuery(this).val();
+        });
+        
+        //console.log(formData);
+        
+        jQuery.ajax({
+  				type:"post",
+  				url:url,
+  				data:formData,
+  				success : function ( res ) {
+  				  $btnParams.button('reset');
+  				  // #params-basics
+  				},
+  				error : function ( error ) {
+  				  $btnParams.button('reset');
+  					console.log(error);
+  				}
+  			});
+	  });
 	});
 </script>

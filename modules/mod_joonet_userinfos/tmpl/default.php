@@ -8,6 +8,7 @@
  */
 
 defined('_JEXEC') or die;
+//JHTML::_('behavior.modal');
 $config = JFactory::getConfig();
 $sitename = $config->get('sitename');
 ?>
@@ -16,13 +17,13 @@ $sitename = $config->get('sitename');
     <div class="card-img-top" style="background-image:url('https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150')"></div>
     <div class="card-block text-center">
       <h4 class="card-title">
-        <a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&id='.$userinfos['user_id']) ?>"><?php echo $userinfos['name'] ?></a>
+        <a href="<?php echo JRoute::_('index.php?option=com_joonet&view=profile&id='.$userinfos['juser']['id']) ?>"><?php echo $userinfos['juser']['name'] ?></a>
       </h4>
-      <p class="card-text"><?php echo $userinfos['bio'] ?></p> 
+      <p class="card-text"><?php echo $userinfos['profile']['aboutme'] ?></p> 
       <address>
-        <strong><?php echo $userinfos['address'] ?></strong><br>
-        <?php echo $userinfos['city'] . ', ' . $userinfos['country'] ?><br>
-        <abbr title="Phone">P:</abbr> <?php echo $userinfos['phone'] ?>
+        <strong><?php echo $userinfos['profile']['address1'] ?></strong><br>
+        <?php echo $userinfos['profile']['city'] . ', ' . $userinfos['profile']['country'] ?><br>
+        <abbr title="Phone">P:</abbr> <?php echo $userinfos['profile']['phone'] ?>
       </address>
     </div>
   </div>
@@ -35,6 +36,10 @@ $sitename = $config->get('sitename');
       </a>
     </div>
     <div class="btn-group text-center" role="group">
+      <!--<a class="modal btn btn-default" href="index.php?option=com_users&view=profile&layout=edit&tmpl=component?" rel="{handler: 'iframe', size: {x: 640, y: 540}}">
+        <span class="glyphicon glyphicon-user"></span>
+      	<?php echo JText::_('MOD_JOONET_USER_SETTINGS') ?>
+      </a>-->
       <button class="btn btn-default" id="btn-settings">
       	<span class="glyphicon glyphicon-user"></span>
       	<?php echo JText::_('MOD_JOONET_USER_SETTINGS') ?>
@@ -60,7 +65,12 @@ $sitename = $config->get('sitename');
   		<div class="modal-body">
   		  <p class="text-center"><?php echo JText::_('COM_JOONET_LOADING') ?></p>
   		</div>
-  		<div class="modal-footer"></div>
+  		<div class="modal-footer">
+  		  <div class="form-group text-center">
+      		<button type="button" class="btn btn-default" data-dismiss="modal"><?php echo JText::_('COM_JOONET_ACTION_CLOSE') ?></button>
+      		<button type="submit" data-loading-text="<?php echo JText::_('COM_JOONET_ACTION_SAVING') ?>" class="btn btn-primary" id="btn-save-settings"><?php echo JText::_('COM_JOONET_ACTION_SAVE') ?></button>
+      	</div>
+  		</div>
   	</div>
   </div>
 </div>

@@ -205,10 +205,21 @@ ul.posts-list>li.post:first-child>.form-group  {
 
 .card-img-top {
   height: 150px;
-  background-size: contain;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: #f5f5f5;
   /**
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;*
-  background-color: #f5f5f5;
-  border-color: #d3e0e9;
+  border-color: #d3e0e9;**/
+}
+
+#params-basics iframe {
+    width: 100%;
+    min-height: 700px;
+}
+
+#userSettingsModal .tab-content {
+  margin-top: 10px;
 }

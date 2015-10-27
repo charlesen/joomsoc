@@ -129,4 +129,70 @@ class JoonetController extends JControllerLegacy {
 				$view->display();
 	  }
 	}
+	
+	// Save user settings 
+	function settingssave () {
+	  // Check for request forgeries.
+		JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
+
+	  $user = JFactory::getUser();
+	  $userOb = JUser::getInstance($user->id);
+	  $jinput = JFactory::getApplication()->input;
+	  $result = true;
+	  try {
+  	  // Save user basics
+  	  $userOb->setParam('name', $jinput->getString('name'));
+  	  $userOb->setParam('username', $jinput->getString('username'));
+  	  $userOb->setParam('email', $jinput->getString('email'));
+  	  if ( !empty($jinput->get('password')) ) $userOb->setParam('password', $jinput->getString('password'));
+  	  
+  	  if ($userOb->save(true)) {
+        $profile = array();
+        $profile['profile.phone'] = $jinput->get('phone');
+        $profile['profile.address1'] = $jinput->getString('address');
+        $profile['profile.city'] = $jinput->getString('city');
+        $profile['profile.country'] = $jinput->getString('country');
+        $profile['profile.region'] = $jinput->get('region');
+        $profile['profile.aboutme'] = $jinput->getString('aboutme');
+  
+        $ordering = 0;
+        $results = array();
+        foreach ($profile  as $k=>$v) {
+          $db = JFactory::getDbo();
+          $query = $db->getQuery(true);
+          
+          // Fields to update.
+          $ordering += 1;
+          $fields = array(
+              $db->quoteName('profile_value') . ' = ' . $db->quote($v),
+              $db->quoteName('ordering') . ' = '. $ordering
+          );
+           
+          // Conditions for which records should be updated.
+          $conditions = array(
+              $db->quoteName('user_id') . ' = '. $user->id, 
+              $db->quoteName('profile_key') . ' = ' . $db->quote($k)
+          );
+          
+          $query->update($db->quoteName('#__user_profiles'))->set($fields)->where($conditions);
+           
+          $db->setQuery($query);
+           
+          $result = $result && $db->execute();
+        }
+        
+        if ( !$result  )  JError::raiseError(500, $user->getError() );
+        
+        return $result;
+        
+      } else {
+        JError::raiseError(500, $user->getError() ); // Save or show error if failed
+      }
+	    
+	  } catch (Exception $e) {
+			echo new JResponseJson($e);
+		}
+	  
+	}
+	
 }

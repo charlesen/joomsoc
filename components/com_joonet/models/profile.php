@@ -38,26 +38,46 @@ class JoonetModelProfile extends JModelItem
 	}
 	
 	public function getUser ( $userid = null  ) {
-	  $user = isset($userid) ? JFactory::getUser($userid) : JFactory::getUser();
-	  $user = (array) $user;
-	  
-	  $db = JFactory::getDbo();
-	  $query = $db->getQuery(true)
-			->select('*')
-			->from($db->quoteName('#__joonet_user_details', 'a'))
-      ->where($db->quoteName('a.user_id') . ' = '. $user['id']);
-		
-		$db->setQuery($query);
-
+		$userDetails = array();
 		try {
-		  $userDetails = (array) $db->loadObjectList()[0];
+		  
+		  $user = isset($userid) ? JFactory::getUser($userid) : JFactory::getUser();
+		  $profile = (array) JUserHelper::getProfile($user->id);
+		  
+		  $userDetails['juser'] = (array) $user;
+		  $userDetails['profile'] = $profile['profile'];
 		  
 		  //print_r($userDetails); exit;
 		  
-		  return array_merge($user, $userDetails);
+		  return $userDetails;
 		} catch (RuntimeException $e) {
 			JFactory::getApplication()->enqueueMessage(JText::_('JERROR_AN_ERROR_HAS_OCCURRED'), 'error');
 			return array();
 		}
+	}
+	
+	public function saveProfile ($data = null) {
+
+    // Fields to update.
+    $fields = array(
+        $db->quoteName('phone') . ' = ' . $data->phone,
+        $db->quoteName('address1') . ' = ' . $data->address,
+        $db->quoteName('city') . ' = ' . $data->city,
+        $db->quoteName('country') . ' = ' . $data->country,
+        $db->quoteName('region') . ' = ' . $data->location,
+        $db->quoteName('aboutme') . ' = ' . $data->bio
+    );
+    // Conditions for which records should be updated.
+    $conditions = array(
+        $db->quoteName('user_id') . ' = 42', 
+        $db->quoteName('profile_key') . ' = ' . $db->quote('custom.message')
+    );
+    $query->update($db->quoteName('#__user_profiles'))->set($fields)->where($conditions);
+    
+    $db->setQuery($query);
+    $result = $db->query();
+    
+    $result = JFactory::getDbo()->updateObject('#__user_profiles', $data, 'user_id');
+	  
 	}
 }
