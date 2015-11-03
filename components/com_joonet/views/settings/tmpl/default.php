@@ -17,6 +17,8 @@ defined('_JEXEC') or die('Restricted access');
 
 <div id="userinfos-tabs">
 
+  <p class="text-success text-center system-msg"></p>
+
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <li role="presentation" class="active"><a href="#params-basics" aria-controls="params-basics" role="tab" data-toggle="tab"><?php echo JText::_('COM_JOONET_PARAMS_TAB_BASICS') ?></a></li>
@@ -31,12 +33,12 @@ defined('_JEXEC') or die('Restricted access');
       <div role="tabpanel" class="tab-pane active" id="params-basics">
         <?php if ($this->userinfos['juser']) : ?>
           <div class="form-group">
-            <label for="inputPhone" class="sr-only"><?php echo JText::_('COM_JOONET_USER_NAME') ?></label>
-            <input type="text" class="form-control" name="name" id="inputName" value="<?php echo $this->userinfos['juser']['name'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_NAME') ?>">
+            <label for="inputPhone" class="sr-only"><?php echo JText::_('COM_JOONET_USER_USERNAME') ?></label>
+            <input type="text" class="form-control" name="username" id="inputUsername" value="<?php echo $this->userinfos['juser']['username'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_USERNAME') ?>" disabled>
           </div>
           <div class="form-group">
-            <label for="inputPhone" class="sr-only"><?php echo JText::_('COM_JOONET_USER_USERNAME') ?></label>
-            <input type="text" class="form-control" name="username" id="inputUsername" value="<?php echo $this->userinfos['juser']['username'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_USERNAME') ?>">
+            <label for="inputPhone" class="sr-only"><?php echo JText::_('COM_JOONET_USER_NAME') ?></label>
+            <input type="text" class="form-control" name="name" id="inputName" value="<?php echo $this->userinfos['juser']['name'] ?>" placeholder="<?php echo JText::_('COM_JOONET_USER_NAME') ?>">
           </div>
           <div class="form-group">
             <label for="inputAddress" class="sr-only"><?php echo JText::_('COM_JOONET_USER_EMAIL') ?></label>
@@ -110,6 +112,7 @@ defined('_JEXEC') or die('Restricted access');
   				data:formData,
   				success : function ( res ) {
   				  $btnParams.button('reset');
+  				  jQuery("#userinfos-tabs .system-msg").html("<?php echo JText::_('COM_JOONET_SYSTEM_USER_SAVED_SUCCESS') ?>");
   				  // #params-basics
   				},
   				error : function ( error ) {

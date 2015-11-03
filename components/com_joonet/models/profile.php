@@ -55,29 +55,4 @@ class JoonetModelProfile extends JModelItem
 			return array();
 		}
 	}
-	
-	public function saveProfile ($data = null) {
-
-    // Fields to update.
-    $fields = array(
-        $db->quoteName('phone') . ' = ' . $data->phone,
-        $db->quoteName('address1') . ' = ' . $data->address,
-        $db->quoteName('city') . ' = ' . $data->city,
-        $db->quoteName('country') . ' = ' . $data->country,
-        $db->quoteName('region') . ' = ' . $data->location,
-        $db->quoteName('aboutme') . ' = ' . $data->bio
-    );
-    // Conditions for which records should be updated.
-    $conditions = array(
-        $db->quoteName('user_id') . ' = 42', 
-        $db->quoteName('profile_key') . ' = ' . $db->quote('custom.message')
-    );
-    $query->update($db->quoteName('#__user_profiles'))->set($fields)->where($conditions);
-    
-    $db->setQuery($query);
-    $result = $db->query();
-    
-    $result = JFactory::getDbo()->updateObject('#__user_profiles', $data, 'user_id');
-	  
-	}
 }

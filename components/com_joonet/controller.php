@@ -136,17 +136,21 @@ class JoonetController extends JControllerLegacy {
 		JSession::checkToken('get') or jexit(JText::_('JINVALID_TOKEN'));
 
 	  $user = JFactory::getUser();
-	  $userOb = JUser::getInstance($user->id);
 	  $jinput = JFactory::getApplication()->input;
 	  $result = true;
 	  try {
-  	  // Save user basics
-  	  $userOb->setParam('name', $jinput->getString('name'));
-  	  $userOb->setParam('username', $jinput->getString('username'));
-  	  $userOb->setParam('email', $jinput->getString('email'));
-  	  if ( !empty($jinput->get('password')) ) $userOb->setParam('password', $jinput->getString('password'));
+  	  // Set the new user settings ;
+  	  $user->name = $jinput->getString('name');
+  	  $user->username = $jinput->getString('username');
+  	  $user->email = $jinput->getString('email');
+  	  if ( !empty($jinput->get('password')) ) $user->password = $jinput->getString('password');
   	  
-  	  if ($userOb->save(true)) {
+  	  if ($user->save(true)) {
+  	    
+  	    // Update user's session object
+        $session = JFactory::getSession();
+        $session->set('user', new JUser($user->id));
+  	    
         $profile = array();
         $profile['profile.phone'] = $jinput->get('phone');
         $profile['profile.address1'] = $jinput->getString('address');
